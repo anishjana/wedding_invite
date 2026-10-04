@@ -12,7 +12,7 @@
  *   color    color shown behind / while the image loads (default "#f8f2ee")
  */
 export default function StaticBackground({
-  src = "/images/background.png",
+  src = `${import.meta.env.BASE_URL}images/background.png`,
   size = "cover",
   position = "center",
   color = "#f8f2ee",
