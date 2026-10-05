@@ -56,7 +56,7 @@ export default function FallingConfetti({ rate = 350, duration = null, zIndex = 
           origin: { x: Math.random(), y: -0.05 },   // anywhere across the top edge
           angle: 90,                                // straight down
           spread: 40,
-          startVelocity: 0.5,                // slow start
+          startVelocity: 0.2,                // slow start
           gravity: rand(0.25, 0.5),                 // gentle fall
           drift: rand(-0.8, 0.8),                   // sway sideways
           decay: 0.96,
