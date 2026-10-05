@@ -24,11 +24,6 @@ export default function Ceremonies() {
           </article>
         ))}
       </div>
-      <div className="plan">
-        <h3>Plan Your Visit</h3>
-        <p>Schedule a meeting with the couple or wedding planners directly on Calendly.</p>
-        <a className="btn" href="https://calendly.com/shaadiora-demo" target="_blank" rel="noreferrer">Calendly</a>
-      </div>
     </Section>
   )
 }

@@ -20,7 +20,7 @@ export default function StaticBackground({
   return (
     <div
       aria-hidden="true"
-      class="background-image"
+      className="background-image"
       style={{
         position: "fixed",
         inset: 0,

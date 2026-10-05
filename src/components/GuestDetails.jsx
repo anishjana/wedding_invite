@@ -57,7 +57,7 @@ function GiftDetails() {
 export default function GuestDetails() {
   return (
     <>
-      <HelpfulDetails />
+      {/* <HelpfulDetails /> */}
       <GiftDetails />
     </>
   )

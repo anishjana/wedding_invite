@@ -31,8 +31,8 @@ export default function Invitation() {
             <div key={family.title} className="fam">
               <h4>{family.title}</h4>
               <p>{family.host}</p>
-              <p><small>Paternal Grandparents</small>{family.pg}</p>
-              <p><small>Maternal Grandparents</small>{family.mg}</p>
+              {/* <p><small>Paternal Grandparents</small>{family.pg}</p>
+              <p><small>Maternal Grandparents</small>{family.mg}</p> */}
             </div>
           ))}
         </div>

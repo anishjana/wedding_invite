@@ -7,10 +7,11 @@ function ScratchCard() {
   const [isRevealed, setIsRevealed] = useState(false)
 
   useEffect(() => {
+    const dpr = window.devicePixelRatio || 1
     const canvas = canvasRef.current
     const context = canvas.getContext('2d')
-    canvas.width = 320
-    canvas.height = 140
+    canvas.width = 250 * dpr
+    canvas.height = 112 * dpr
 
     const gradient = context.createLinearGradient(0, 0, 320, 140)
     gradient.addColorStop(0, '#b8924a')
@@ -20,7 +21,10 @@ function ScratchCard() {
     context.fillStyle = '#0b0809'
     context.font = '22px serif'
     context.textAlign = 'center'
-    context.fillText('Mark Your Calendar', 160, 78)
+    context.fillText('Mark Your Calendar', 160, 65)
+    context.font = '14px serif'
+    context.letterSpacing = "1.2px"
+    context.fillText('✦ Scratch with your finger or mouse ✦', 160, 100)
 
     let isScratching = false
     const getPosition = event => {
@@ -76,7 +80,6 @@ function ScratchCard() {
         <div className="date">{DATE_LABEL}</div>
         <canvas ref={canvasRef} className={isRevealed ? 'gone' : ''} />
       </div>
-      <p className="hint">✦ Scratch with your finger or mouse ✦</p>
     </>
   )
 }

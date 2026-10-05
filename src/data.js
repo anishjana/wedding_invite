@@ -1,7 +1,7 @@
 const u = id => `https://shaadiora.com/images/unsplash/${id}.jpg`
-export const DATE = new Date('2026-11-04T00:00:00')
-export const DATE_LABEL = 'November 4, 2026'
-export const couple = { a: 'Anish', b: 'Ankita', venue: 'Dolphin Beach Resort, Mandarmoni', tag: '#AnkIsh' }
+export const DATE = new Date('2026-12-05T00:00:00')
+export const DATE_LABEL = 'December 5, 2026'
+export const couple = { a: 'Anish', b: 'Ankita', venue: 'Dolphin Beach Resort, Mandarmoni', tag: '#Ankish' }
 export const families = [
   { title: "Bride's Family", host: 'Mrs. Gopa Pradhan & Mr. Sibayan Pradhan',
     pg: 'Late Smt. Kamla Sharma & Late Shri Mohan Sharma', mg: 'Late Smt. Saroj Verma & Late Shri Gopal Verma' },
@@ -9,12 +9,14 @@ export const families = [
     pg: 'Late Smt. Radha Kapoor & Late Shri Vijay Kapoor', mg: 'Late Smt. Pushpa Malhotra & Late Shri Ramesh Malhotra' },
 ]
 export const events = [
-  { icon: '💍', name: 'Sagai (Engagement)', when: '5 Nov • 11:00 AM', at: 'Royal Heritage Hall', dress: 'Traditional Indian Attire',
-    desc: 'The traditional engagement ceremony where families exchange sweets and rings.', start: '20261105T110000', end: '20261105T130000' },
-  { icon: '🪷', name: 'Haldi Ceremony', when: '5 Nov • 9:30 AM', at: 'Riverside Garden', dress: 'Yellow Ethnic Wear',
-    desc: 'The auspicious turmeric ceremony filled with music and family blessings.', start: '20261105T093000', end: '20261105T110000' },
-  { icon: '🌸', name: 'Shubh Vivah', when: '5 Nov • 12:15 PM', at: 'Grand Mandap', dress: 'Royal Traditional / Formal Ethnic',
-    desc: 'The main wedding ceremony as we take our seven vows in the presence of Agni.', start: '20261105T121500', end: '20261105T160000' },
+  { icon: '💍', name: 'Sangeet & Engagement', when: '4 Dec • 07:00 PM', at: 'Santanir, Contai', dress: '',
+    desc: 'The traditional engagement ceremony where families exchange sweets and rings.', start: '20261204T190000', end: '20261204T230000' },
+  { icon: '🪷', name: 'Haldi Ceremony', when: '5 Dec • 07:00 AM', at: 'Dolphin Beach Resort, Mandarmoni', dress: '',
+    desc: 'The auspicious turmeric ceremony filled with music and family blessings.', start: '20261205T070000', end: '20261205T083000' },
+  { icon: '🔥', name: 'Shubh Vivah', when: '5 Dec • 06:00 PM', at: 'Dolphin Beach Resort, Mandarmoni', dress: '',
+    desc: 'The main wedding ceremony as we take our seven vows in the presence of Agni.', start: '20261205T180000', end: '20261205T230000' },
+    { icon: '🎂', name: 'Reception', when: '6 Dec • 06:00 PM', at: 'Dolphin Beach Resort, Mandarmoni', dress: '',
+    desc: 'The main wedding ceremony as we take our seven vows in the presence of Agni.', start: '20261206T180000', end: '20261206T230000' },
 ]
 export const gallery = [
   ['photo-1610173827043-9db50e0d8ef9', 'Love'], ['photo-1774814329866-e790e6632c31', 'Joy'],
