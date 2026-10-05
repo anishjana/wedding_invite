@@ -27,7 +27,7 @@ export default function RSVP({ onClose }) {
             </select>
             <input type="number" min="1" max="10" value={form.guests} onChange={updateField('guests')} />
             <textarea placeholder="A message for the couple" value={form.note} onChange={updateField('note')} />
-            <button disabled={!form.name} onClick={() => { console.log('RSVP', form); setIsSent(true) }}>Send</button>
+            <button className="btn" disabled={!form.name} onClick={() => { console.log('RSVP', form); setIsSent(true) }}>Send</button>
           </div>
         )}
       </div>

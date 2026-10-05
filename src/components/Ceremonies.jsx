@@ -8,14 +8,14 @@ export default function Ceremonies() {
   return (
     <Section>
       <SectionHeading eyebrow="The Sacred Rites" first="The" second="Ceremonies" />
-      <div className="grid">
+      <div className="grid ceremony-grid">
         {events.map(event => (
           <article key={event.name} className="ev">
             <span className="ic">{event.icon}</span>
             <h3>{event.name}</h3>
             <p className="gold">{event.when}</p>
             <p>{event.at}</p>
-            <p><small>Dress: </small>{event.dress}</p>
+            {/* <p><small>Dress: </small>{event.dress}</p> */}
             <p className="d">{event.desc}</p>
             <div className="row">
               <a href={mapUrl(event)} target="_blank" rel="noreferrer">Map</a>

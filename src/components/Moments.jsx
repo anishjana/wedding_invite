@@ -5,7 +5,7 @@ export default function Moments() {
   return (
     <Section>
       <SectionHeading eyebrow="Our Moments" first="The" second="Gallery" />
-      <div className="gal">
+      <div className="gal gallery-grid">
         {gallery.map((moment, index) => (
           <figure key={moment.src}>
             <img src={moment.src} alt={`Moment ${index + 1}`} loading="lazy" />

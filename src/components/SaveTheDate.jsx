@@ -10,8 +10,8 @@ function ScratchCard() {
     const dpr = window.devicePixelRatio || 1
     const canvas = canvasRef.current
     const context = canvas.getContext('2d')
-    canvas.width = 250 * dpr
-    canvas.height = 112 * dpr
+    canvas.width = 320
+    canvas.height = 140
 
     const gradient = context.createLinearGradient(0, 0, 320, 140)
     gradient.addColorStop(0, '#b8924a')
