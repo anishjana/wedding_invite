@@ -1,21 +1,21 @@
-import { useState } from 'react'
-import { families } from '../data'
+import { useState } from "react";
+import { families } from "../data";
 
 export default function Invitation() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
-  const openWithKeyboard = event => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault()
-      setIsOpen(true)
+  const openWithKeyboard = (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      setIsOpen(true);
     }
-  }
+  };
 
   return (
     <section className="sec invite">
       <small>You Are Invited</small>
       <div
-        className={`env ${isOpen ? 'open' : ''}`}
+        className={`env ${isOpen ? "open" : ""}`}
         onClick={() => setIsOpen(true)}
         role="button"
         tabIndex={0}
@@ -26,8 +26,11 @@ export default function Invitation() {
         <div className="seal">AA</div>
         <div className="card">
           <h3>With Joy We Invite You</h3>
-          <p className="quote">“With the blessings of the divine and the love of our families, we invite you to celebrate our union.”</p>
-          {families.map(family => (
+          <p className="quote">
+            “With the blessings of the divine and the love of our families, we
+            invite you to celebrate our union.”
+          </p>
+          {families.map((family) => (
             <div key={family.title} className="fam">
               <h4>{family.title}</h4>
               <p>{family.host}</p>
@@ -39,5 +42,5 @@ export default function Invitation() {
         {!isOpen && <span className="tap">Tap to open</span>}
       </div>
     </section>
-  )
+  );
 }
