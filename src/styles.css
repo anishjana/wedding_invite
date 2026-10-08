@@ -124,17 +124,6 @@ em {
     color: var(--gold)
 }
 
-.reveal {
-    opacity: 0;
-    transform: translateY(32px);
-    transition: .9s ease
-}
-
-.reveal.in {
-    opacity: 1;
-    transform: none
-}
-
 .hero {
     min-height: 100svh;
     display: grid;
@@ -574,10 +563,6 @@ div.background-image {
         transition: none !important
     }
 
-    .reveal {
-        opacity: 1;
-        transform: none
-    }
 }
 
 

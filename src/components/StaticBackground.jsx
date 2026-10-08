@@ -1,3 +1,10 @@
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+
 /**
  * Standalone fixed background. Renders no children: drop it anywhere
  * (usually once, near the root) and the rest of your page sits on top.
@@ -17,8 +24,12 @@ export default function StaticBackground({
   position = "center",
   color = "#f8f2ee",
 }) {
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], [0, 90]);
+
   return (
-    <div
+    <motion.div
       aria-hidden="true"
       className="background-image"
       style={{
@@ -31,6 +42,8 @@ export default function StaticBackground({
         backgroundSize: size,
         backgroundPosition: position,
         backgroundRepeat: "no-repeat",
+        y: reduceMotion ? 0 : y,
+        scale: reduceMotion ? 1 : 1.08,
       }}
     />
   );

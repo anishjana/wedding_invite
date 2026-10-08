@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import { DATE, DATE_LABEL, couple } from '../data'
+import { useRevealOnScroll } from './Section'
 
 function useCountdown() {
   const calculate = () => {
@@ -23,9 +25,10 @@ function useCountdown() {
 
 export default function Hero() {
   const countdown = useCountdown()
+  const revealProps = useRevealOnScroll()
 
   return (
-    <section className="hero">
+    <motion.section {...revealProps} className="hero">
       <h1>{couple.a}</h1>
       <span className="amp">&</span>
       <h1>{couple.b}</h1>
@@ -37,6 +40,6 @@ export default function Hero() {
         ))}
       </div>
       <div className="scroll">Scroll to begin</div>
-    </section>
+    </motion.section>
   )
 }

@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { families } from "../data";
+import { useRevealOnScroll } from "./Section";
 
 export default function Invitation() {
   const [isOpen, setIsOpen] = useState(false);
+  const revealProps = useRevealOnScroll();
 
   const openWithKeyboard = (event) => {
     if (event.key === "Enter" || event.key === " ") {
@@ -12,7 +15,7 @@ export default function Invitation() {
   };
 
   return (
-    <section className="sec invite">
+    <motion.section {...revealProps} className="sec invite">
       <small>You Are Invited</small>
       <div
         className={`env ${isOpen ? "open" : ""}`}
@@ -41,6 +44,6 @@ export default function Invitation() {
         </div>
         {!isOpen && <span className="tap">Tap to open</span>}
       </div>
-    </section>
+    </motion.section>
   );
 }

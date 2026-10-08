@@ -1,25 +1,44 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from 'framer-motion'
+
+export function useRevealOnScroll() {
+  const reduceMotion = useReducedMotion()
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  })
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.14, 0.84, 1],
+    [0, 1, 1, 0.9],
+  )
+  const y = useTransform(
+    scrollYProgress,
+    [0, 0.14, 0.84, 1],
+    [52, 0, -18, -32],
+  )
+  const scale = useTransform(scrollYProgress, [0, 0.14, 1], [0.97, 1, 1])
+
+  return {
+    ref,
+    style: reduceMotion
+      ? { opacity: 1, y: 0, scale: 1 }
+      : { opacity, y, scale },
+  }
+}
 
 export default function Section({ children, className = '' }) {
-  const sectionRef = useRef(null)
-  const [visible, setVisible] = useState(false)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setVisible(true)
-        observer.disconnect()
-      }
-    }, { threshold: 0.15 })
-
-    if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => observer.disconnect()
-  }, [])
-
+  const revealProps = useRevealOnScroll()
   return (
-    <section ref={sectionRef} className={`sec reveal ${visible ? 'in' : ''} ${className}`}>
+    <motion.section {...revealProps} className={`sec ${className}`}>
       {children}
-    </section>
+    </motion.section>
   )
 }
 

@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 export default function RSVP({ onClose }) {
+  const reduceMotion = useReducedMotion();
   const [form, setForm] = useState({
     name: "",
     guests: 1,
@@ -30,8 +32,23 @@ export default function RSVP({ onClose }) {
   };
 
   return (
-    <div className="modal" onClick={onClose}>
-      <div className="panel" onClick={(event) => event.stopPropagation()}>
+    <motion.div
+      className="modal"
+      onClick={onClose}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: reduceMotion ? 0 : 0.25 }}
+    >
+      <motion.div
+        className="panel"
+        onClick={(event) => event.stopPropagation()}
+        initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.96 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{
+          duration: reduceMotion ? 0 : 0.35,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+      >
         {isSent ? (
           <>
             <h3>Thank you, {form.name}!</h3>
@@ -71,7 +88,7 @@ export default function RSVP({ onClose }) {
             </button>
           </div>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

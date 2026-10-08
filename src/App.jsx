@@ -27,7 +27,6 @@ export default function App() {
           <Ceremonies />
           <Moments />
           <GuestDetails />
-          {/* <Wishes /> */}
           <FinalRsvp />
         </>
       )}
