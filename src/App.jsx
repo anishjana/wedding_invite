@@ -20,14 +20,14 @@ export default function App() {
       {isCurtainOpen && (
         <>
           <FallingConfetti />
-          <Hero />
-          <Invitation />
-          <Story />
-          <SaveTheDate />
-          <Ceremonies />
-          <Moments />
-          <GuestDetails />
-          <FinalRsvp />
+          <Hero revealDirection="right" />
+          <Invitation revealDirection="left" />
+          <Story revealDirection="right" />
+          <SaveTheDate revealDirection="left" />
+          <Ceremonies revealDirection="right" />
+          <Moments revealDirection="left" />
+          <GuestDetails revealDirection="right" />
+          <FinalRsvp revealDirection="left" />
         </>
       )}
       <Curtains keepFrame={false} onOpen={() => setIsCurtainOpen(true)} />

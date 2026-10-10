@@ -1,9 +1,9 @@
 import { couple } from "../data";
 import Section, { SectionHeading } from "./Section";
 
-export default function Story() {
+export default function Story({ revealDirection = "right" }) {
   return (
-    <Section>
+    <Section revealDirection={revealDirection}>
       <SectionHeading
         eyebrow="Our Journey"
         first="How our"

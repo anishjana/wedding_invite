@@ -18,7 +18,7 @@ function HelpfulDetails() {
   )
 }
 
-function GiftDetails() {
+function GiftDetails({ revealDirection }) {
   const [copied, setCopied] = useState('')
   const [copyError, setCopyError] = useState(false)
 
@@ -38,7 +38,7 @@ function GiftDetails() {
   }
 
   return (
-    <Section>
+    <Section revealDirection={revealDirection}>
       <SectionHeading eyebrow="Blessings & Gifts" first="Shagun &" second="Blessings" />
       <p>Your presence and blessings are our greatest gift. If you wish to honor us with a shagun, digital transfer details are below.</p>
       <dl className="bank">
@@ -54,11 +54,11 @@ function GiftDetails() {
   )
 }
 
-export default function GuestDetails() {
+export default function GuestDetails({ revealDirection = 'right' }) {
   return (
     <>
       {/* <HelpfulDetails /> */}
-      <GiftDetails />
+      <GiftDetails revealDirection={revealDirection} />
     </>
   )
 }

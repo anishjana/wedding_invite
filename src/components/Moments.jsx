@@ -43,9 +43,9 @@ function GalleryMoment({ moment, index }) {
   )
 }
 
-export default function Moments() {
+export default function Moments({ revealDirection = "right" }) {
   return (
-    <Section>
+    <Section revealDirection={revealDirection}>
       <SectionHeading eyebrow="Our Moments" first="The" second="Gallery" />
       <div className="gal gallery-grid">
         {gallery.map((moment, index) => (

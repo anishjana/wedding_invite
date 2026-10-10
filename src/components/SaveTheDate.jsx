@@ -84,9 +84,9 @@ function ScratchCard() {
   )
 }
 
-export default function SaveTheDate() {
+export default function SaveTheDate({ revealDirection = "right" }) {
   return (
-    <Section>
+    <Section revealDirection={revealDirection}>
       <SectionHeading eyebrow="Save The Date" first="Reveal our" second="Special Day" />
       <ScratchCard />
     </Section>

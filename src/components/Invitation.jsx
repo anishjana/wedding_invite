@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import { families } from "../data";
 import { useRevealOnScroll } from "./Section";
 
-export default function Invitation() {
+export default function Invitation({ revealDirection = "right" }) {
   const [isOpen, setIsOpen] = useState(false);
-  const revealProps = useRevealOnScroll();
+  const revealProps = useRevealOnScroll(revealDirection);
 
   const openWithKeyboard = (event) => {
     if (event.key === "Enter" || event.key === " ") {

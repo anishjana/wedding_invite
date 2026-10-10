@@ -26,11 +26,11 @@ const cardVariants = {
   },
 }
 
-export default function Ceremonies() {
+export default function Ceremonies({ revealDirection = "right" }) {
   const reduceMotion = useReducedMotion()
 
   return (
-    <Section>
+    <Section revealDirection={revealDirection}>
       <SectionHeading eyebrow="The Sacred Rites" first="The" second="Ceremonies" />
       <motion.div
         className="grid ceremony-grid"
