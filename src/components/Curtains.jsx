@@ -169,6 +169,35 @@ function Tassel({ onPull, onDragProgress, onRelease, hidden }) {
             opacity=".7"
           />
         </motion.svg>
+        <motion.svg
+          aria-hidden="true"
+          width="20"
+          height="14"
+          viewBox="0 0 20 14"
+          style={{
+            position: "absolute",
+            top: 110,
+            left: 12,
+            overflow: "visible",
+            pointerEvents: "none",
+            filter: "drop-shadow(0 1px 3px rgba(0,0,0,.8))",
+          }}
+          animate={{ opacity: [0.25, 0.5, 0.25], y: [0, 4, 0] }}
+          transition={{
+            duration: 1.4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <path
+            d="m3 3 7 7 7-7"
+            fill="none"
+            stroke="#f1da9b"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </motion.svg>
       </motion.div>
     </motion.div>
   );
@@ -346,7 +375,7 @@ export default function WeddingCurtainReveal({
             onClick={() => setOpenState(!open)}
           >
             <span className="hint-star">✦</span>
-            <span className="hint-text">Pull to Open</span>
+            <span className="hint-text">Pull the knot to open</span>
             <span className="hint-star">✦</span>
           </button>
         )}
