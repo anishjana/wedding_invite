@@ -64,7 +64,6 @@ export const events = [
 ];
 const galleryFiles = [
   "14.jpg",
-  "15.jpg",
   "1.jpg",
   "9.jpg",
   "6.jpg",
@@ -84,7 +83,7 @@ const galleryLabels = [
   "Magic",
   "Love",
   "Soulmate",
-  "Joy",
+  "Magic",
   "Together",
   "Forever",
   "Bliss",
