@@ -11,6 +11,7 @@ import SaveTheDate from "./components/SaveTheDate";
 import Story from "./components/Story";
 import Wishes from "./components/Wishes";
 import Curtains from "./components/Curtains";
+import PolaroidLineCarousel from "./components/Carousel";
 
 export default function App() {
   const [isCurtainOpen, setIsCurtainOpen] = useState(false);
@@ -26,8 +27,7 @@ export default function App() {
           <SaveTheDate revealDirection="left" />
           <Ceremonies revealDirection="right" />
           <Moments revealDirection="left" />
-          <GuestDetails revealDirection="right" />
-          <FinalRsvp revealDirection="left" />
+          <FinalRsvp revealDirection="right" />
         </>
       )}
       <Curtains keepFrame={false} onOpen={() => setIsCurtainOpen(true)} />

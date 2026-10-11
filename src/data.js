@@ -1,4 +1,3 @@
-const u = id => `https://shaadiora.com/images/unsplash/${id}.jpg`
 export const DATE = new Date('2026-12-05T00:00:00')
 export const DATE_LABEL = 'December 5, 2026'
 export const couple = { a: 'Anish', b: 'Ankita', venue: 'Dolphin Beach Resort, Mandarmoni', tag: '#Ankish' }
@@ -18,10 +17,18 @@ export const events = [
     { icon: '🎂', name: 'Reception', when: '6 Dec • 06:00 PM', at: 'Dolphin Beach Resort, Mandarmoni', dress: '',
     desc: 'The main wedding ceremony as we take our seven vows in the presence of Agni.', start: '20261206T180000', end: '20261206T230000' },
 ]
-export const gallery = [
-  ['photo-1610173827043-9db50e0d8ef9', 'Love'], ['photo-1774814329866-e790e6632c31', 'Joy'],
-  ['photo-1727430256509-0f897d6f4765', 'Together'], ['photo-1634692843550-8ddff2a880ad', 'Forever'],
-].map(([id, label]) => ({ src: u(id), label }))
+const galleryFiles = [
+  '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg',
+  '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg',
+]
+const galleryLabels = [
+  'Love', 'Joy', 'Together', 'Forever', 'Bliss', 'Cherish', 'Bloom', 'Harmony', 'Soulmate',
+  'Promise', 'Sunrise', 'Dreams', 'Embrace', 'Eternity', 'Magic',
+]
+export const gallery = galleryFiles.map((file, index) => ({
+  image: `/gallery/resized/${file}`,
+  title: galleryLabels[index % galleryLabels.length],
+}))
 export const know = [
   ['Dress Code', 'Royal Traditional / Ethnic wear (sarees, lehengas, kurtas & sherwanis).'],
   ['Wedding Hashtag', '#AdityaWedsAnaya — Please use this when posting photos!'],

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { db } from "../firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 export default function RSVP({ onClose }) {
   const reduceMotion = useReducedMotion();
@@ -10,6 +12,8 @@ export default function RSVP({ onClose }) {
     note: "",
   });
   const [isSent, setIsSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
 
   const updateField = (field) => (event) => {
     setForm((current) => ({ ...current, [field]: event.target.value }));
@@ -21,14 +25,25 @@ export default function RSVP({ onClose }) {
     guestCount >= 1 &&
     guestCount <= 10;
 
-  const submitForm = () => {
+  const submitForm = async () => {
     if (!canSubmit) return;
-    console.log("RSVP", {
-      ...form,
-      name: form.name.trim(),
-      guests: guestCount,
-    });
-    setIsSent(true);
+    setIsSubmitting(true);
+    setSubmitError(null);
+    try {
+      await addDoc(collection(db, "rsvps"), {
+        name: form.name.trim(),
+        guests: guestCount,
+        attend: form.attend,
+        note: form.note,
+        timestamp: serverTimestamp(),
+      });
+      setIsSent(true);
+    } catch (error) {
+      console.error("Error submitting RSVP:", error);
+      setSubmitError(error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -83,8 +98,15 @@ export default function RSVP({ onClose }) {
               value={form.note}
               onChange={updateField("note")}
             />
-            <button className="btn" disabled={!canSubmit} onClick={submitForm}>
-              Send
+            {submitError && (
+              <p className="error">Error: {submitError}</p>
+            )}
+            <button
+              className="btn"
+              disabled={!canSubmit || isSubmitting}
+              onClick={submitForm}
+            >
+              {isSubmitting ? "Sending..." : "Send"}
             </button>
           </div>
         )}

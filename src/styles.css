@@ -40,6 +40,7 @@
 }
 
 html {
+    overflow-x: clip;
     scroll-behavior: smooth
 }
 
@@ -85,6 +86,11 @@ p.quote {
     margin: 0 auto;
     padding: 96px 24px;
     text-align: center
+}
+
+.moments-section .pl-root {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
 }
 
 small {
@@ -228,7 +234,7 @@ em {
     border: 1px solid var(--gold);
     border-radius: 6px;
     cursor: pointer;
-    transition: .8s
+    transition: min-height 1.2s ease .25s, background-color 1.2s ease .25s
 }
 
 .env .flap {
@@ -238,7 +244,7 @@ em {
     background: #3a2326;
     clip-path: polygon(0 0, 100% 0, 50% 100%);
     transform-origin: top;
-    transition: transform .8s;
+    transition: transform 1.4s cubic-bezier(.22, 1, .36, 1), opacity .5s ease .9s;
     z-index: 3
 }
 
@@ -256,7 +262,7 @@ em {
     place-items: center;
     font: 600 1.1rem var(--font-display);
     z-index: 4;
-    transition: .5s
+    transition: opacity .5s ease .25s
 }
 
 .tap {
@@ -272,7 +278,7 @@ em {
     max-height: 0;
     overflow: hidden;
     padding: 0 24px;
-    transition: max-height 1.2s .5s, padding .8s .5s;
+    transition: max-height 1.8s cubic-bezier(.22, 1, .36, 1) .65s, padding 1s ease .65s;
     position: relative;
     z-index: 2
 }
