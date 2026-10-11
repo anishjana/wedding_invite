@@ -289,13 +289,20 @@ em {
     transition: opacity .5s ease .25s
 }
 
+.seal img {
+    width: 72%;
+    height: 72%;
+    object-fit: contain;
+}
+
 .tap {
     position: absolute;
     bottom: 16px;
     left: 0;
     right: 0;
-    font-size: .8rem;
-    color: var(--gold)
+    font-size: .9rem;
+    color: var(--gold);
+    font-family: var(--font-serif);
 }
 
 .card {
@@ -579,6 +586,24 @@ cite {
 
 .final p {
     margin-top: 12px
+}
+
+.sec.final {
+    min-height: 45svh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 24px;
+}
+
+.sec.final > .inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.final-couple-tag {
+    margin-top: auto !important;
 }
 
 footer {

@@ -26,7 +26,9 @@ export default function Invitation({ revealDirection = "right" }) {
         onKeyDown={openWithKeyboard}
       >
         <div className="flap" />
-        <div className="seal">AA</div>
+        <div className="seal">
+          <img src={`${import.meta.env.BASE_URL}icons/logo.png`} alt="" />
+        </div>
         <div className="card">
           <h3>With Joy We Invite You</h3>
           <p className="quote">

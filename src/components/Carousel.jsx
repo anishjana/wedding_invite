@@ -541,7 +541,7 @@ export default function PolaroidLineCarousel({
   return (
     <div
       ref={rootRef}
-      className={["-m-[11rem] pl-root", className].filter(Boolean).join(" ")}
+      className={["-m-[6rem] pl-root", className].filter(Boolean).join(" ")}
       style={{
         ["--pl-height"]: height,
         background,
