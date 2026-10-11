@@ -32,13 +32,13 @@ export default function App() {
       {isCurtainOpen && (
         <>
           <FallingConfetti />
-          <Hero revealDirection="right" curtainsOpened={isCurtainOpen} />
-          <Invitation revealDirection="left" />
-          <Story revealDirection="right" />
-          <SaveTheDate revealDirection="left" />
-          <Ceremonies revealDirection="right" />
-          <Moments revealDirection="left" />
-          <FinalRsvp revealDirection="right" />
+          <Hero revealDirection="left" curtainsOpened={isCurtainOpen} />
+          <SaveTheDate revealDirection="right" />
+          <Ceremonies revealDirection="left" />
+          <Invitation revealDirection="right" />
+          <Story revealDirection="left" />
+          <Moments revealDirection="right" />
+          <FinalRsvp revealDirection="left" />
         </>
       )}
       <Curtains
