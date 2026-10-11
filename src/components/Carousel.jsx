@@ -599,7 +599,7 @@ export default function PolaroidLineCarousel({
           <div className="pl-peg" />
         </div>
       ))}
-      <div className="pl-bar">
+      {/* <div className="pl-bar">
         <div className="pl-cap" key={active} aria-hidden="true">
           {s.title ? <span className="pl-title">{s.title}</span> : null}
           {s.caption ? <span className="pl-sub">{s.caption}</span> : null}
@@ -642,7 +642,7 @@ export default function PolaroidLineCarousel({
       </div>
       <div className="pl-sr" aria-live="polite">
         {"Print " + (active + 1) + " of " + n + (s.title ? ": " + s.title : "")}
-      </div>
+      </div> */}
     </div>
   );
 }
