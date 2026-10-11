@@ -288,7 +288,7 @@ const PL_CSS = [
   ".pl-root:focus-visible{box-shadow:inset 0 0 0 2px var(--pl-ink)}",
   ".pl-string{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible}",
   ".pl-card{position:absolute;left:0;top:0;width:var(--pl-cw);transform-origin:50% 0;cursor:inherit}",
-  ".pl-print{margin-top:10px;background:#fbfaf7;padding:10px 10px 0;box-shadow:0 1px 2px rgba(0,0,0,.12),0 18px 30px -16px rgba(0,0,0,.4);transition:transform .5s cubic-bezier(.2,.7,.2,1),filter .5s ease}",
+  ".pl-print{margin-top:10px;background:var(--gold);padding:10px 10px 0;box-shadow:0 1px 2px rgba(0,0,0,.12),0 18px 30px -16px rgba(0,0,0,.4);transition:transform .5s cubic-bezier(.2,.7,.2,1),filter .5s ease}",
   ".pl-card[data-on='0'] .pl-print{transform:scale(1);filter:saturate(.7) brightness(.96)}",
   ".pl-shot{position:relative;aspect-ratio:1;overflow:hidden;background:#d9d5cc}",
   ".pl-shot img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;display:block;pointer-events:none}",

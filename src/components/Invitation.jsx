@@ -27,7 +27,7 @@ export default function Invitation({ revealDirection = "right" }) {
       >
         <div className="flap" />
         <div className="seal">
-          <img src={`${import.meta.env.BASE_URL}icons/logo.png`} alt="" />
+          <img src={`${import.meta.env.BASE_URL}icons/logo-round.png`} alt="" />
         </div>
         <div className="card">
           <h3>With Joy We Invite You</h3>

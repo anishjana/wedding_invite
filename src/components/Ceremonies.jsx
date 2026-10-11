@@ -13,26 +13,23 @@ const VIDEO_BACKGROUNDS = {
   Reception: "reception.mp4",
 };
 
-const gridVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      delayChildren: 0.12,
-      staggerChildren: 0.14,
-    },
+const cardVariants = (index) => ({
+  hidden: {
+    opacity: 0,
+    y: 36,
+    rotateX: 10,
+    rotate: index % 2 === 0 ? -1.5 : 1.5,
+    scale: 0.96,
   },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 36, rotateX: 10, scale: 0.96 },
   visible: {
     opacity: 1,
     y: 0,
     rotateX: 0,
+    rotate: 0,
     scale: 1,
     transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
   },
-};
+});
 
 export default function Ceremonies({ revealDirection = "right" }) {
   const reduceMotion = useReducedMotion();
@@ -46,16 +43,15 @@ export default function Ceremonies({ revealDirection = "right" }) {
       />
       <motion.div
         className="grid ceremony-grid"
-        variants={gridVariants}
-        initial={reduceMotion ? false : "hidden"}
-        whileInView={reduceMotion ? undefined : "visible"}
-        viewport={{ once: true, amount: 0.15 }}
       >
-        {events.map((event) => (
+        {events.map((event, index) => (
           <motion.article
             key={event.name}
             className={`ev${VIDEO_BACKGROUNDS[event.name] ? " ev-video" : ""}`}
-            variants={cardVariants}
+            variants={cardVariants(index)}
+            initial={reduceMotion ? false : "hidden"}
+            whileInView={reduceMotion ? undefined : "visible"}
+            viewport={{ once: false, amount: 0.25 }}
             whileHover={reduceMotion ? undefined : { y: -6, scale: 1.025 }}
             transition={{ duration: 0.25 }}
           >
