@@ -10,7 +10,7 @@ import SaveTheDate from "./components/SaveTheDate";
 import Story from "./components/Story";
 import Curtains from "./components/Curtains";
 import MusicPlayer from "./components/MusicPlayer";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 export default function App() {
   const [isCurtainOpen, setIsCurtainOpen] = useState(false);
   const musicPlayerRef = useRef(null);
