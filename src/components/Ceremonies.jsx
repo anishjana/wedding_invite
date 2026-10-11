@@ -4,6 +4,12 @@ import Section, { SectionHeading } from './Section'
 
 const calendarUrl = event => `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.name)}&dates=${event.start}/${event.end}&location=${encodeURIComponent(event.at)}&details=${encodeURIComponent(event.desc)}`
 const mapUrl = event => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.at)}`
+const VIDEO_BACKGROUNDS = {
+  "Sangeet & Engagement": "sangeet.mp4",
+  "Haldi Ceremony": "haldi.mp4",
+  "Shubh Vivah": "shubh vivaah.mp4",
+  Reception: "reception.mp4",
+}
 
 const gridVariants = {
   hidden: {},
@@ -42,11 +48,25 @@ export default function Ceremonies({ revealDirection = "right" }) {
         {events.map(event => (
           <motion.article
             key={event.name}
-            className="ev"
+            className={`ev${VIDEO_BACKGROUNDS[event.name] ? " ev-video" : ""}`}
             variants={cardVariants}
             whileHover={reduceMotion ? undefined : { y: -6, scale: 1.025 }}
             transition={{ duration: 0.25 }}
           >
+            {VIDEO_BACKGROUNDS[event.name] && (
+              <>
+                <video
+                  className="ev-background-video"
+                  src={`${import.meta.env.BASE_URL}video-bg/${VIDEO_BACKGROUNDS[event.name]}`}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  aria-hidden="true"
+                />
+                <div className="ev-background-overlay" aria-hidden="true" />
+              </>
+            )}
             <span className="ic">
               {event.iconImage ? <img src={event.iconImage} alt="" /> : event.icon}
             </span>

@@ -22,7 +22,7 @@ export const families = [
 ];
 export const events = [
   {
-    icon: "💍",
+    iconImage: "/icons/ring.png",
     name: "Sangeet & Engagement",
     when: "4 Dec • 07:00 PM",
     at: "Santanir, Contai",
@@ -32,7 +32,7 @@ export const events = [
     end: "20261204T230000",
   },
   {
-    icon: "🪷",
+    iconImage: "/icons/haldi.png",
     name: "Haldi Ceremony",
     when: "5 Dec • 07:00 AM",
     at: "Dolphin Beach Resort, Mandarmoni",

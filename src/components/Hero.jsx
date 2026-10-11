@@ -46,8 +46,8 @@ export default function Hero({
           scale: curtainsOpened ? 1 : 0.8,
         }}
         transition={{
-          duration: reduceMotion ? 0 : 1,
-          delay: reduceMotion ? 0 : 0.4,
+          duration: reduceMotion ? 0 : 3,
+          delay: reduceMotion ? 0 : 0.8,
           ease: "easeInOut",
         }}
       >

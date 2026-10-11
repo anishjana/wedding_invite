@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import FallingConfetti from "./components/FallingConfetti";
 import StaticBackground from "./components/StaticBackground";
 import Ceremonies from "./components/Ceremonies";
@@ -12,9 +12,23 @@ import Story from "./components/Story";
 import Wishes from "./components/Wishes";
 import Curtains from "./components/Curtains";
 import PolaroidLineCarousel from "./components/Carousel";
+import MusicPlayer from "./components/MusicPlayer";
 
 export default function App() {
   const [isCurtainOpen, setIsCurtainOpen] = useState(false);
+  const musicPlayerRef = useRef(null);
+  const chimeRef = useRef(null);
+
+  const playRevealChime = () => {
+    const chime = chimeRef.current;
+    if (!chime) return;
+
+    chime.currentTime = 0;
+    chime.volume = 0.6;
+    chime.play().catch((error) => {
+      console.error("Curtain reveal chime playback failed:", error);
+    });
+  };
 
   return (
     <main>
@@ -32,7 +46,17 @@ export default function App() {
       )}
       <Curtains
         keepFrame={false}
-        onOpen={() => setIsCurtainOpen(true)}
+        onOpen={() => {
+          setIsCurtainOpen(true);
+          musicPlayerRef.current?.start();
+          playRevealChime();
+        }}
+      />
+      <MusicPlayer ref={musicPlayerRef} visible={isCurtainOpen} />
+      <audio
+        ref={chimeRef}
+        src={`${import.meta.env.BASE_URL}music-effect/chime.mp3`}
+        preload="auto"
       />
       <StaticBackground />
     </main>

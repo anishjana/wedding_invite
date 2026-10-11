@@ -164,6 +164,7 @@ em {
 
 .hero-detail-label {
     color: white;
+    text-transform: none;
 }
 
 @media (min-width: 481px) {
@@ -408,6 +409,32 @@ canvas.gone {
     transition: .3s
 }
 
+.ev-video {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.ev-background-video,
+.ev-background-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.ev-background-video {
+    z-index: -2;
+    object-fit: cover;
+    filter: brightness(0.75);
+}
+
+.ev-background-overlay {
+    z-index: -1;
+    background: rgba(11, 8, 9, .62);
+}
+
 .ev:hover {
     border-color: var(--gold);
     transform: translateY(-4px)
@@ -426,7 +453,7 @@ canvas.gone {
 }
 
 .ic img {
-    width: 40px;
+    width: 100px;
     height: 40px;
     object-fit: contain;
 }
@@ -3140,4 +3167,13 @@ div.background-image {
     .hint-badge,.story-tag,.story-quote,.timeline-card,.imm-btn,.imm-countdown-item,.imm-info-card,.imm-gift-panel,.imm-wish-card,.imm-rsvp-overlay,.imm-hero-heart,.imm-rsvp-heart,.imm-music-btn {
         -webkit-backdrop-filter:none!important
     }
+}
+
+
+.hero-date-venue-item p.gold{
+    font-size: 1.1rem;
+}
+
+.hero-date-venue-item p.hero-detail-label{
+    font-size: 1rem;
 }
