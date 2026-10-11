@@ -391,7 +391,16 @@ canvas.gone {
 }
 
 .ic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 2rem
+}
+
+.ic img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
 }
 
 .row {

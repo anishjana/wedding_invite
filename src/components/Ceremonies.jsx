@@ -47,7 +47,9 @@ export default function Ceremonies({ revealDirection = "right" }) {
             whileHover={reduceMotion ? undefined : { y: -6, scale: 1.025 }}
             transition={{ duration: 0.25 }}
           >
-            <span className="ic">{event.icon}</span>
+            <span className="ic">
+              {event.iconImage ? <img src={event.iconImage} alt="" /> : event.icon}
+            </span>
             <h3>{event.name}</h3>
             <p className="gold">{event.when}</p>
             <p>{event.at}</p>

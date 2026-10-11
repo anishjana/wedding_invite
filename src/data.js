@@ -12,10 +12,10 @@ export const events = [
     desc: 'The traditional engagement ceremony where families exchange sweets and rings.', start: '20261204T190000', end: '20261204T230000' },
   { icon: '🪷', name: 'Haldi Ceremony', when: '5 Dec • 07:00 AM', at: 'Dolphin Beach Resort, Mandarmoni', dress: '',
     desc: 'The auspicious turmeric ceremony filled with music and family blessings.', start: '20261205T070000', end: '20261205T083000' },
-  { icon: '🔥', name: 'Shubh Vivah', when: '5 Dec • 06:00 PM', at: 'Dolphin Beach Resort, Mandarmoni', dress: '',
+  { iconImage: '/icons/mandap.png', name: 'Shubh Vivah', when: '5 Dec • 06:00 PM', at: 'Dolphin Beach Resort, Mandarmoni', dress: '',
     desc: 'The main wedding ceremony as we take our seven vows in the presence of Agni.', start: '20261205T180000', end: '20261205T230000' },
-    { icon: '🎂', name: 'Reception', when: '6 Dec • 06:00 PM', at: 'Dolphin Beach Resort, Mandarmoni', dress: '',
-    desc: 'The main wedding ceremony as we take our seven vows in the presence of Agni.', start: '20261206T180000', end: '20261206T230000' },
+    { iconImage: '/icons/dance.png', name: 'Reception', when: '6 Dec • 06:00 PM', at: 'Dolphin Beach Resort, Mandarmoni', dress: '',
+      desc: 'Join us for an evening of celebration & music as we celebrate the newlyweds.', start: '20261206T180000', end: '20261206T230000' },
 ]
 const galleryFiles = [
   '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg',
