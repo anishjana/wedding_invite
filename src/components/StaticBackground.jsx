@@ -1,4 +1,10 @@
-import { motion } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 
 /**
  * Standalone fixed background. Renders no children: drop it anywhere
@@ -19,6 +25,11 @@ export default function StaticBackground({
   position = "center",
   color = "#f8f2ee",
 }) {
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll();
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const y = useSpring(parallaxY, { stiffness: 70, damping: 24, mass: 0.6 });
+
   return (
     <motion.div
       aria-hidden="true"
@@ -26,14 +37,23 @@ export default function StaticBackground({
       style={{
         position: "fixed",
         inset: 0,
+        overflow: "hidden",
         zIndex: -1,
         pointerEvents: "none",
         backgroundColor: color,
-        backgroundImage: `url(${src})`,
-        backgroundSize: size,
-        backgroundPosition: position,
-        backgroundRepeat: "no-repeat",
       }}
-    />
+    >
+      <motion.div
+        style={{
+          position: "absolute",
+          inset: "-100px 0",
+          y: reduceMotion ? 0 : y,
+          backgroundImage: `url(${src})`,
+          backgroundSize: size,
+          backgroundPosition: position,
+          backgroundRepeat: "no-repeat",
+        }}
+      />
+    </motion.div>
   );
 }
