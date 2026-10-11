@@ -11,6 +11,7 @@
         "deploy": "gh-pages -d dist"
     },
     "dependencies": {
+        "@vercel/analytics": "^2.0.1",
         "canvas-confetti": "^1.9.4",
         "firebase": "^13.0.0",
         "framer-motion": "^14.0.0",
