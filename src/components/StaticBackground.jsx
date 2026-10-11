@@ -1,9 +1,4 @@
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion } from "framer-motion";
 
 /**
  * Standalone fixed background. Renders no children: drop it anywhere
@@ -24,10 +19,6 @@ export default function StaticBackground({
   position = "center",
   color = "#f8f2ee",
 }) {
-  const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], [0, 90]);
-
   return (
     <motion.div
       aria-hidden="true"
@@ -42,8 +33,6 @@ export default function StaticBackground({
         backgroundSize: size,
         backgroundPosition: position,
         backgroundRepeat: "no-repeat",
-        y: reduceMotion ? 0 : y,
-        scale: reduceMotion ? 1 : 1.08,
       }}
     />
   );

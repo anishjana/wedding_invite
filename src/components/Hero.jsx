@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { DATE, DATE_LABEL, couple } from "../data";
 import { useRevealOnScroll } from "./Section";
 
@@ -23,34 +23,63 @@ function useCountdown() {
   return countdown;
 }
 
-export default function Hero({ revealDirection = "right" }) {
+export default function Hero({
+  revealDirection = "right",
+  curtainsOpened = true,
+}) {
   const countdown = useCountdown();
+  const reduceMotion = useReducedMotion();
   const revealProps = useRevealOnScroll(revealDirection);
 
   return (
     <motion.section {...revealProps} className="hero">
-      <h1>{couple.a}</h1>
-      <span className="amp">&</span>
-      <h1>{couple.b}</h1>
-      <span className="mt-12 text-lg">
-        <p className="mb-3">Are getting married</p>
-        <p className="">on</p>
-
-        <p className="gold">• {DATE_LABEL} •</p>
-        <p className="">at</p>
-
-        <p className="gold">• {couple.venue} •</p>
-      </span>
-
-      <div className="count mt-8">
-        {["Days", "Hours", "Minutes", "Seconds"].map((label, index) => (
-          <div key={label}>
-            <b>{countdown[index]}</b>
-            <span>{label}</span>
+      <motion.div
+        style={{
+          display: "grid",
+          placeContent: "center",
+          justifyItems: "center",
+          textAlign: "center",
+        }}
+        initial={{ opacity: 0, scale: 0.6 }}
+        animate={{
+          opacity: curtainsOpened ? 1 : 0,
+          scale: curtainsOpened ? 1 : 0.8,
+        }}
+        transition={{
+          duration: reduceMotion ? 0 : 1,
+          delay: reduceMotion ? 0 : 0.4,
+          ease: "easeInOut",
+        }}
+      >
+        <h1>{couple.a}</h1>
+        <span className="amp">&</span>
+        <h1>{couple.b}</h1>
+        <div className="hero-details mt-10 text-lg">
+          <p className="">are getting married</p>
+          <div className="hero-date-venue">
+            <div className="hero-date-venue-item">
+              <p className="hero-detail-label">on</p>
+              <p className="gold">• {DATE_LABEL} •</p>
+            </div>
+            <div className="hero-date-venue-item">
+              <p className="hero-detail-label">at</p>
+              <p className="gold">• {couple.venue} •</p>
+            </div>
           </div>
-        ))}
-      </div>
-      <div className="scroll">Scroll to begin</div>
+        </div>
+
+        <div className="count mt-14 mb-8">
+          {["Days", "Hours", "Minutes", "Seconds"].map((label, index) => (
+            <div key={label}>
+              <b>{countdown[index]}</b>
+              <span>{label}</span>
+            </div>
+          ))}
+        </div>
+        <p className="gold mb-4">{couple.tag}</p>
+
+        <div className="scroll">Scroll to begin</div>
+      </motion.div>
     </motion.section>
   );
 }

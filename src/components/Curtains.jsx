@@ -176,6 +176,7 @@ function Tassel({ onPull, onDragProgress, onRelease, hidden }) {
 
 export default function WeddingCurtainReveal({
   onOpen,
+  onOpened,
   onClose,
   keepFrame = true,
 }) {
@@ -194,6 +195,7 @@ export default function WeddingCurtainReveal({
         duration: reduce ? 0.01 : 2.4,
         ease: EASE,
         onComplete: () => {
+          onOpened?.();
           if (!keepFrame) setIsFading(true);
         },
       });

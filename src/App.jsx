@@ -21,7 +21,7 @@ export default function App() {
       {isCurtainOpen && (
         <>
           <FallingConfetti />
-          <Hero revealDirection="right" />
+          <Hero revealDirection="right" curtainsOpened={isCurtainOpen} />
           <Invitation revealDirection="left" />
           <Story revealDirection="right" />
           <SaveTheDate revealDirection="left" />
@@ -30,7 +30,10 @@ export default function App() {
           <FinalRsvp revealDirection="right" />
         </>
       )}
-      <Curtains keepFrame={false} onOpen={() => setIsCurtainOpen(true)} />
+      <Curtains
+        keepFrame={false}
+        onOpen={() => setIsCurtainOpen(true)}
+      />
       <StaticBackground />
     </main>
   );

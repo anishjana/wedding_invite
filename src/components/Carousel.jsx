@@ -282,7 +282,8 @@ function useSlideImages(slides) {
 }
 
 const PL_CSS = [
-  ".pl-root{position:relative;width:100%;overflow:hidden;background:var(--pl-bg);color:var(--pl-ink);user-select:none;-webkit-user-select:none;touch-action:pan-y;outline:none;cursor:grab}",
+  ".pl-root{position:relative;width:100%;height:var(--pl-height,100vh);overflow:hidden;background:var(--pl-bg);color:var(--pl-ink);user-select:none;-webkit-user-select:none;touch-action:pan-y;outline:none;cursor:grab}",
+  "@media (max-width:767px){.pl-root{height:60vh}}",
   ".pl-root[data-drag='1']{cursor:grabbing}",
   ".pl-root:focus-visible{box-shadow:inset 0 0 0 2px var(--pl-ink)}",
   ".pl-string{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible}",
@@ -311,9 +312,9 @@ const PL_CSS = [
 
 export default function PolaroidLineCarousel({
   slides = DEFAULT_SLIDES,
-  height = "100svh",
+  height = "100vh",
   cardWidth = 230,
-  sag = 120,
+  sag = 70,
   swing = 1.2,
   autoplay = 4500,
   string = "#8a7f72",
@@ -542,7 +543,7 @@ export default function PolaroidLineCarousel({
       ref={rootRef}
       className={["-m-[11rem] pl-root", className].filter(Boolean).join(" ")}
       style={{
-        height,
+        ["--pl-height"]: height,
         background,
         ["--pl-ink"]: ink,
         ["--pl-muted"]: "color-mix(in srgb, var(--pl-ink) 55%, transparent)",
