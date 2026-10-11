@@ -41,7 +41,22 @@
 
 html {
     overflow-x: clip;
-    scroll-behavior: smooth
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) transparent
+}
+
+html::-webkit-scrollbar {
+    width: 8px
+}
+
+html::-webkit-scrollbar-track {
+    background: transparent
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 999px
 }
 
 body {
