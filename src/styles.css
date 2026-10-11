@@ -362,7 +362,12 @@ em {
     place-items: center;
     font: 400 2rem var(--font-display);
     border: 1px solid var(--gold);
-    color: var(--gold)
+    color: var(--gold);
+    transition: font-size .3s ease
+}
+
+.scratch.revealed .date {
+    font-size: 2.2rem
 }
 
 canvas {

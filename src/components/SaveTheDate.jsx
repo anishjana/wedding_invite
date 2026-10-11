@@ -76,7 +76,7 @@ function ScratchCard() {
 
   return (
     <>
-      <div className="scratch">
+      <div className={`scratch${isRevealed ? ' revealed' : ''}`}>
         <div className="date">{DATE_LABEL}</div>
         <canvas ref={canvasRef} className={isRevealed ? 'gone' : ''} />
       </div>
