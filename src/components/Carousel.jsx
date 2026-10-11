@@ -316,7 +316,7 @@ export default function PolaroidLineCarousel({
   cardWidth = 230,
   sag = 70,
   swing = 1.2,
-  autoplay = 4500,
+  autoplay = 2000,
   string = "#8a7f72",
   background = "transparent",
   ink = "var(--color-foreground, #161513)",

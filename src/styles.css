@@ -406,7 +406,8 @@ canvas.gone {
     padding: 28px 22px;
     border-radius: 10px;
     text-align: center;
-    transition: .3s
+    transition: .3s;
+    min-height: 30rem;
 }
 
 .ev-video {
