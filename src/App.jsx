@@ -44,9 +44,9 @@ export default function App() {
       <Curtains
         keepFrame={false}
         onOpen={() => {
-          setIsCurtainOpen(true);
           musicPlayerRef.current?.start();
           playRevealChime();
+          setIsCurtainOpen(true);
         }}
       />
       <MusicPlayer ref={musicPlayerRef} visible={isCurtainOpen} />

@@ -7,7 +7,7 @@ import {
 } from "react";
 import { motion } from "framer-motion";
 
-const TRACKS = ["bengali.mp3", "hindi.mp3"];
+const TRACKS = ["bengali.mp3"];
 const VOLUME = 0.3;
 const FADE_IN_DURATION = 5000;
 
@@ -16,6 +16,7 @@ const MusicPlayer = forwardRef(function MusicPlayer({ visible }, ref) {
   const trackRef = useRef("");
   const fadeFrameRef = useRef(null);
   const playbackAttemptRef = useRef(false);
+  const supportsVolumeControlRef = useRef(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playbackError, setPlaybackError] = useState("");
 
@@ -53,18 +54,19 @@ const MusicPlayer = forwardRef(function MusicPlayer({ visible }, ref) {
       const track = TRACKS[Math.floor(Math.random() * TRACKS.length)];
       trackRef.current = `${import.meta.env.BASE_URL}music/${track}`;
       audio.src = trackRef.current;
-      audio.load();
     }
 
     playbackAttemptRef.current = true;
     audio.volume = 0;
+    supportsVolumeControlRef.current = audio.volume === 0;
+    if (!supportsVolumeControlRef.current) audio.volume = VOLUME;
     audio.loop = true;
     setPlaybackError("");
     try {
       await audio.play();
       if (!audio.paused) {
         setIsPlaying(true);
-        fadeInAudio();
+        if (supportsVolumeControlRef.current) fadeInAudio();
       }
     } catch (error) {
       console.error("Music playback failed:", error);

@@ -98,6 +98,7 @@ function Tassel({ onPull, onDragProgress, onRelease, hidden }) {
         drag="y"
         dragConstraints={{ top: 0, bottom: PULL_MAX }}
         dragElastic={0.12}
+        onTap={onPull}
         whileDrag={{ cursor: "grabbing" }}
         onDrag={(_, info) => onDragProgress(info.offset.y)}
         onDragEnd={(_, info) => {
