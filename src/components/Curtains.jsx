@@ -2,6 +2,7 @@ import { useState } from "react";
 import {
   animate,
   motion,
+  AnimatePresence,
   useMotionValue,
   useTransform,
   useReducedMotion,
@@ -12,7 +13,7 @@ import {
  * npm i framer-motion
  *
  * - Pull the gold tassel down (or press Enter/Space on it) to open
- * - Or use the button fixed at the bottom of the screen
+ * - Or tap the illuminated marquee sign in the middle of the screen
  * - Curtains gather at the sides afterwards, framing your page
  *
  * Usage:
@@ -33,6 +34,11 @@ const EASE = [0.77, 0, 0.18, 1];
 const PULL_MAX = 150;
 const DRAG_REVEAL_PROGRESS = 1.1;
 const CORD_BASE = 110;
+
+// Marquee sign settings
+const BULB_COUNT = 20;
+const SIGN_SIZE = 200; // px, outer diameter
+const BULB_RADIUS = 86; // px, distance of bulbs from center
 
 const velvet = (side) => ({
   backgroundColor: CURTAIN,
@@ -204,6 +210,47 @@ function Tassel({ onPull, onDragProgress, onRelease, hidden }) {
   );
 }
 
+/** Circular illuminated marquee sign used as the "open" button */
+function MarqueeButton({ onClick }) {
+  return (
+    <motion.button
+      type="button"
+      className="mq-sign"
+      aria-label="Tap to open the invitation"
+      onClick={onClick}
+      initial={{ opacity: 0, scale: 0.85 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.96 }}
+      transition={{ duration: 0.4 }}
+    >
+      {/* metal ring */}
+      <span className="mq-ring" aria-hidden="true" />
+      {/* inner red disc */}
+      <span className="mq-disc" aria-hidden="true" />
+
+      {/* bulbs */}
+      {Array.from({ length: BULB_COUNT }).map((_, i) => {
+        const angle = (360 / BULB_COUNT) * i;
+        return (
+          <span
+            key={i}
+            aria-hidden="true"
+            className="mq-bulb"
+            style={{
+              transform: `rotate(${angle}deg) translateY(-${BULB_RADIUS}px)`,
+              animationDelay: `${(i % 2) * 0.6}s`,
+            }}
+          />
+        );
+      })}
+
+      <span className="mq-text">Tap to open</span>
+    </motion.button>
+  );
+}
+
 export default function WeddingCurtainReveal({
   onOpen,
   onOpened,
@@ -262,6 +309,104 @@ export default function WeddingCurtainReveal({
     >
       <style>{`
         .cr-btn:focus-visible, [role="button"]:focus-visible { outline: 2px solid #f1da9b; }
+
+        /* ---------- Marquee sign button ---------- */
+        .mq-sign {
+          position: relative;
+          width: ${SIGN_SIZE}px;
+          height: ${SIGN_SIZE}px;
+          max-width: 70vw;
+          max-height: 70vw;
+          padding: 0;
+          border: 0;
+          border-radius: 50%;
+          background: transparent;
+          cursor: pointer;
+          pointer-events: auto;
+          -webkit-tap-highlight-color: transparent;
+          filter: drop-shadow(0 14px 22px rgba(0,0,0,.6))
+                  drop-shadow(0 0 28px rgba(255,170,60,.28));
+        }
+        .mq-sign:focus-visible { outline: 2px solid #f1da9b; outline-offset: 8px; }
+
+        .mq-ring {
+          position: absolute;
+          inset: 0;
+          border-radius: 50%;
+          background:
+            radial-gradient(circle at 30% 25%, rgba(255,255,255,.18), rgba(255,255,255,0) 45%),
+            linear-gradient(145deg, #7b6a5a, #4a4039 55%, #2e2823);
+          border: 3px solid #e8a23d;
+          box-shadow:
+            0 0 0 1px rgba(255,205,120,.55),
+            0 0 18px rgba(255,160,50,.55),
+            inset 0 0 0 2px rgba(255,205,120,.35),
+            inset 0 4px 10px rgba(0,0,0,.55);
+        }
+
+        .mq-disc {
+          position: absolute;
+          inset: 17%;
+          border-radius: 50%;
+          background-color: #3e1c0f;
+          border: 2px solid #e8a23d;
+          box-shadow:
+            0 0 10px rgba(255,160,50,.5),
+            inset 0 8px 18px rgba(0,0,0,.65),
+            inset 0 -2px 8px rgba(255,120,80,.25);
+        }
+
+        .mq-bulb {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 15px;
+          height: 15px;
+          margin: -7.5px 0 0 -7.5px;
+          border-radius: 50%;
+          background: radial-gradient(circle at 50% 45%, #fffbe8 0 18%, #ffd980 45%, #f0a030 100%);
+          border: 1.5px solid #ffcf7a;
+          box-shadow:
+            0 0 6px 2px rgba(255,200,100,.9),
+            0 0 14px 5px rgba(255,150,40,.55);
+          animation: mq-glow 1.2s ease-in-out infinite alternate;
+        }
+
+        @keyframes mq-glow {
+          from { filter: brightness(.7);  box-shadow: 0 0 3px 1px rgba(255,200,100,.5), 0 0 8px 2px rgba(255,150,40,.3); }
+          to   { filter: brightness(1.15); box-shadow: 0 0 7px 2px rgba(255,210,120,1), 0 0 18px 6px rgba(255,150,40,.65); }
+        }
+
+        .mq-text {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 24%;
+          text-align: center;
+          font-family: "Cinzel", "Playfair Display", Georgia, "Times New Roman", serif;
+          font-weight: 700;
+          font-size: 22px;
+          line-height: 1.15;
+          letter-spacing: .08em;
+          text-transform: uppercase;
+          color: #ffe6a8;
+          text-shadow:
+            0 0 4px rgba(255,220,140,.95),
+            0 0 12px rgba(255,170,60,.85),
+            0 0 24px rgba(255,120,30,.6);
+          animation: mq-text-pulse 2.4s ease-in-out infinite;
+        }
+
+        @keyframes mq-text-pulse {
+          0%, 100% { opacity: .85; }
+          50%      { opacity: 1; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .mq-bulb, .mq-text { animation: none; }
+        }
       `}</style>
 
       {/* Left curtain */}
@@ -347,39 +492,22 @@ export default function WeddingCurtainReveal({
         }
       />
 
-      {/* Bottom button */}
+      {/* Center marquee button */}
       <div
         style={{
           position: "fixed",
-          left: 0,
-          right: 0,
-          bottom: "max(28px, env(safe-area-inset-bottom))",
+          inset: 0,
           display: "flex",
+          alignItems: "center",
           justifyContent: "center",
           zIndex: 50,
           pointerEvents: "none",
+          bottom: "-20rem",
         }}
       >
-        {/* <motion.button
-          className="btn"
-          onClick={() => setOpenState(!open)}
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.96 }}
-        >
-          Pull the tassel to open the curtains
-        </motion.button> */}
-
-        {!open && (
-          <button
-            className="hint-badge"
-            aria-label="Open invitation"
-            onClick={() => setOpenState(!open)}
-          >
-            <span className="hint-star">✦</span>
-            <span className="hint-text">Pull the knot to open</span>
-            <span className="hint-star">✦</span>
-          </button>
-        )}
+        <AnimatePresence>
+          {!open && <MarqueeButton onClick={() => setOpenState(true)} />}
+        </AnimatePresence>
       </div>
     </motion.div>
   );

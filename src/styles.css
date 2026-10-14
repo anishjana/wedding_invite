@@ -62,7 +62,7 @@ html::-webkit-scrollbar-thumb {
 body {
     background: var(--bg);
     color: var(--ink);
-    font: 300 16px/1.7 var(--font-body);
+    font: 600 16px/1.7 var(--font-body);
     padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
     overflow-x: clip
 }
@@ -131,7 +131,8 @@ small {
     font-size: 1.4rem;
     font-style: italic;
     max-width: 640px;
-    margin: 16px auto
+    margin: 16px auto;
+    letter-spacing: .15em;
 }
 
 .invite .quote {
@@ -230,8 +231,10 @@ em {
     left: 50%;
     transform: translateX(-50%);
     color: var(--mut);
-    font-size: .8rem;
-    animation: pulse 2s infinite
+    font-size: 1.2rem;
+    animation: pulse 3s infinite;
+    letter-spacing: .2em;
+    font-family: var(--font-display);
 }
 
 .petals i {
@@ -316,9 +319,10 @@ em {
     bottom: 16px;
     left: 0;
     right: 0;
-    font-size: .9rem;
+    font-size: 1rem;
     color: var(--gold);
     font-family: var(--font-serif);
+    letter-spacing: .1em;
 }
 
 .card {
@@ -451,7 +455,7 @@ canvas.gone {
 .ev-background-video {
     z-index: -2;
     object-fit: cover;
-    filter: brightness(0.75);
+    filter: blur(0.33px) brightness(0.75);
 }
 
 .ev-background-overlay {
@@ -492,6 +496,7 @@ canvas.gone {
 a {
     color: var(--gold);
     font-family: var(--font-serif);
+    text-decoration: underline;
 }
 
 .btn {
@@ -672,8 +677,8 @@ button:disabled {
 }
 
 div.background-image {
-    filter: blur(1px) saturate(71%) invert(1%) sepia(7%) saturate(154%) hue-rotate(18deg) brightness(69%) contrast(115%);
-    opacity: 55%;
+    filter: blur(1.5px) saturate(81%) invert(1%) sepia(7%) saturate(154%) hue-rotate(10deg) brightness(80%) contrast(90%);
+    opacity: 65%;
 }
 
 @media(prefers-reduced-motion:reduce) {
@@ -3223,4 +3228,9 @@ div.background-image {
 
 .hero-date-venue-item p.hero-detail-label{
     font-size: 1rem;
+}
+
+p{
+    font-weight: bold !important;
+    font-size: 1.15rem !important;
 }
