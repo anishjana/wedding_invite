@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { events } from "../data";
 import Section, { SectionHeading } from "./Section";
+import { useEffect } from "react";
 
 const calendarUrl = (event) =>
   `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.name)}&dates=${event.start}/${event.end}&location=${encodeURIComponent(event.at)}&details=${encodeURIComponent(event.desc)}`;
@@ -34,6 +35,25 @@ const cardVariants = (index) => ({
 export default function Ceremonies({ revealDirection = "right" }) {
   const reduceMotion = useReducedMotion();
 
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      const videos = document.querySelectorAll(".ev-background-video");
+      if (document.hidden) {
+        videos.forEach((video) => {
+          video.pause();
+        });
+      } else {
+        videos.forEach((video) => {
+          video.play().catch(() => {}); // ignore play errors
+        });
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
   return (
     <Section revealDirection={revealDirection}>
       <SectionHeading
@@ -41,9 +61,7 @@ export default function Ceremonies({ revealDirection = "right" }) {
         first="The"
         second="Ceremonies"
       />
-      <motion.div
-        className="grid ceremony-grid"
-      >
+      <motion.div className="grid ceremony-grid">
         {events.map((event, index) => (
           <motion.article
             key={event.name}
@@ -58,12 +76,33 @@ export default function Ceremonies({ revealDirection = "right" }) {
             {VIDEO_BACKGROUNDS[event.name] && (
               <>
                 <video
+                  ref={(el) => {
+                    if (el) {
+                      const observer = new IntersectionObserver(
+                        (entries) => {
+                          entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                              el.play().catch((e) =>
+                                console.warn("Video play failed", e),
+                              );
+                            } else {
+                              el.pause();
+                            }
+                          });
+                        },
+                        { threshold: 0.1 },
+                      );
+                      observer.observe(el);
+                      return () => observer.disconnect();
+                    }
+                  }}
                   className="ev-background-video"
                   src={`${import.meta.env.BASE_URL}video-bg/${VIDEO_BACKGROUNDS[event.name]}`}
                   autoPlay
                   muted
                   loop
                   playsInline
+                  preload="metadata"
                   aria-hidden="true"
                 />
                 <div className="ev-background-overlay" aria-hidden="true" />

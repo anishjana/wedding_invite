@@ -277,7 +277,7 @@ em {
     border: 1px solid var(--gold);
     border-radius: 6px;
     cursor: pointer;
-    transition: min-height 1.2s ease .25s, background-color 1.2s ease .25s
+    transition: background-color .3s ease
 }
 
 .env .flap {
@@ -287,7 +287,7 @@ em {
     background: #3a2326;
     clip-path: polygon(0 0, 100% 0, 50% 100%);
     transform-origin: top;
-    transition: transform 1.4s cubic-bezier(.22, 1, .36, 1), opacity .5s ease .9s;
+    transition: transform .8s cubic-bezier(.22, 1, .36, 1), opacity .3s ease .5s;
     z-index: 3
 }
 
@@ -305,7 +305,7 @@ em {
     place-items: center;
     font: 600 1.1rem var(--font-display);
     z-index: 4;
-    transition: opacity .5s ease .25s
+    transition: opacity .25s ease
 }
 
 .seal img {
@@ -330,7 +330,7 @@ em {
     max-height: 0;
     overflow: hidden;
     padding: 0 24px;
-    transition: max-height 1.8s cubic-bezier(.22, 1, .36, 1) .65s, padding 1s ease .65s;
+    transition: max-height .9s cubic-bezier(.22, 1, .36, 1) .2s, padding .5s ease .2s;
     position: relative;
     z-index: 2
 }
@@ -352,7 +352,7 @@ em {
 }
 
 .env.open .card {
-    max-height: 1400px;
+    max-height: 700px;
     padding: 48px 24px 32px
 }
 
@@ -453,7 +453,7 @@ canvas.gone {
     padding: 28px 22px;
     border-radius: 10px;
     text-align: center;
-    transition: .3s;
+    transition: transform .25s ease, border-color .25s ease;
     min-height: 30rem;
 }
 
@@ -475,7 +475,7 @@ canvas.gone {
 .ev-background-video {
     z-index: -2;
     object-fit: cover;
-    filter: blur(0.33px) brightness(0.75);
+    opacity: .75;
 }
 
 .ev-background-overlay {
@@ -3253,4 +3253,15 @@ div.background-image {
 p{
     font-weight: bold !important;
     font-size: 1.15rem !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
 }

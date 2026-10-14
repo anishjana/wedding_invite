@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { Suspense, lazy, useState } from "react";
 import { couple } from "../data";
-import RSVP from "./RSVP";
 import Section from "./Section";
+
+const RSVP = lazy(() => import("./RSVP"));
 
 export default function FinalRsvp({ revealDirection = "right" }) {
   const [showRsvp, setShowRsvp] = useState(false);
@@ -21,7 +22,17 @@ export default function FinalRsvp({ revealDirection = "right" }) {
         </p>
         <p className="gold final-couple-tag">{couple.tag}</p>
       </Section>
-      {showRsvp && <RSVP onClose={() => setShowRsvp(false)} />}
+      {showRsvp && (
+        <Suspense
+          fallback={
+            <div className="modal" role="status" aria-live="polite">
+              Loading RSVP...
+            </div>
+          }
+        >
+          <RSVP onClose={() => setShowRsvp(false)} />
+        </Suspense>
+      )}
     </>
   );
 }

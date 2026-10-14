@@ -47,8 +47,14 @@ export default function Hero({
         </div>
 
         <p className="gold mt-14 mb-4">{couple.tag}</p>
-
-        <div className="scroll">Scroll to begin</div>
+      </motion.div>
+      <motion.div
+        className="scroll"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 3, duration: 1, ease: "easeInOut" }}
+      >
+        Scroll to begin ↓
       </motion.div>
     </motion.section>
   );

@@ -89,6 +89,31 @@ const MusicPlayer = forwardRef(function MusicPlayer({ visible }, ref) {
     [],
   );
 
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      const audio = audioRef.current;
+      if (document.hidden) {
+        if (audio && !audio.paused) {
+          audio.pause();
+          setIsPlaying(false);
+        }
+      } else {
+        // Tab is visible: try to resume playback
+        if (audio) {
+          audio.play().catch(() => {
+            // Ignore play errors (e.g., autoplay policy)
+            // User can press play manually if needed
+          });
+        }
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
   const togglePlayback = () => {
     const audio = audioRef.current;
     if (!audio) return;
