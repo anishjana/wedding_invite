@@ -5,6 +5,7 @@ export const couple = {
   b: "Ankita",
   venue: "Dolphin Beach Resort, Mandarmoni",
   tag: "#Ankish",
+  and: "&",
 };
 export const families = [
   {

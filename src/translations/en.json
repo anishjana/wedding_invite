@@ -1,0 +1,228 @@
+{
+  "hero": {
+    "are_getting_married": "are getting married",
+    "on": "on",
+    "at": "at",
+    "scroll_to_begin": "Scroll to begin"
+  },
+  "data": {
+    "date_label": "December 5, 2026",
+    "couple": {
+      "a": "Anish",
+      "b": "Ankita",
+      "venue": "Dolphin Beach Resort, Mandarmoni",
+      "tag": "#Ankish"
+    },
+    "families": [
+      {
+        "title": "Bride's Family",
+        "host": "Mrs. Gopa Pradhan & Mr. Sibayan Pradhan",
+        "pg": "Late Smt. Kamla Sharma & Late Shri Mohan Sharma",
+        "mg": "Late Smt. Saroj Verma & Late Shri Gopal Verma"
+      },
+      {
+        "title": "Groom's Family",
+        "host": "Mrs. Nipu Jana & Mr. Ansuman Jana",
+        "pg": "Late Smt. Radha Kapoor & Late Shri Vijay Kapoor",
+        "mg": "Late Smt. Pushpa Malhotra & Late Shri Ramesh Malhotra"
+      }
+    ],
+    "events": [
+      {
+        "name": "Sangeet & Engagement",
+        "when": "4 Dec • 07:00 PM",
+        "at": "Santanir, Contai",
+        "dress": "",
+        "desc": "The traditional engagement ceremony where families exchange sweets and rings."
+      },
+      {
+        "name": "Haldi Ceremony",
+        "when": "5 Dec • 07:00 AM",
+        "at": "Dolphin Beach Resort, Mandarmoni",
+        "dress": "",
+        "desc": "The auspicious turmeric ceremony filled with music and family blessings."
+      },
+      {
+        "name": "Shubh Vivah",
+        "when": "5 Dec • 06:00 PM",
+        "at": "Dolphin Beach Resort, Mandarmoni",
+        "dress": "",
+        "desc": "The main wedding ceremony as we take our seven vows in the presence of Agni."
+      },
+      {
+        "name": "Reception",
+        "when": "6 Dec • 06:00 PM",
+        "at": "Dolphin Beach Resort, Mandarmoni",
+        "dress": "",
+        "desc": "Join us for an evening of celebration & music as we celebrate the newlyweds."
+      }
+    ],
+    "galleryLabels": [
+      "Eternity",
+      "Magic",
+      "Love",
+      "Soulmate",
+      "Magic",
+      "Together",
+      "Forever",
+      "Bliss",
+      "Cherish",
+      "Bloom",
+      "Harmony",
+      "Promise",
+      "Sunrise",
+      "Dreams",
+      "Embrace"
+    ],
+    "know": [
+      [
+        "Dress Code",
+        "Royal Traditional / Ethnic wear (sarees, lehengas, kurtas & sherwanis)."
+      ],
+      [
+        "Wedding Hashtag",
+        "#Ankish — Please use this when posting photos!"
+      ],
+      [
+        "Kids Policy",
+        "We love little ones! Children are welcome to celebrate all rituals."
+      ]
+    ],
+    "bank": [
+      ["UPI ID", "adityaanaya@okaxis"],
+      ["Account", "50100482938475"],
+      ["Bank", "HDFC Bank"],
+      ["Account Holder", "Aditya & Anaya"],
+      ["IFSC", "HDFC0000104"]
+    ],
+    "wishes": [
+      [
+        "Wishing you both a lifetime of happiness, laughter, and endless adventure!",
+        "Ramesh & Sunita K."
+      ],
+      [
+        "Congratulations! So excited to celebrate this magical milestone with you.",
+        "Aria Sharma"
+      ],
+      [
+        "Our blessings are always with you. May your beautiful new home be filled with peace, love, and harmony.",
+        "Dada & Dadi"
+      ]
+    ]
+  },
+  "ceremonies": {
+    "section_eyebrow": "The Sacred Rites",
+    "section_title": ["The", "Ceremonies"],
+    "map": "Map",
+    "google_calendar": "Google Calendar",
+    "video_backgrounds": {
+      "Sangeet & Engagement": "sangeet.mp4",
+      "Haldi Ceremony": "haldi.mp4",
+      "Shubh Vivah": "shubh vivaah.mp4",
+      "Reception": "reception.mp4"
+    }
+  },
+  "language_switcher": {
+    "aria_label": "Switch language",
+    "title": "Switch language"
+  },
+  "final_rsvp": {
+    "rsvp_message": "Kindly RSVP by November 15th to help us prepare the royal welcome for you.",
+    "rsvp_button": "Joyfully Accept / RSVP Now",
+    "rsvp_explanation": "RSVP simply means — please let us know if you'll be able to join us.",
+    "loading": "Loading RSVP..."
+  },
+  "invitation": {
+    "eyebrow": "You Are Invited",
+    "card_title": "With Joy We Invite You",
+    "quote": "With the blessings of the divine and the love of our families, we invite you to celebrate our union.",
+    "open_hint": "Tap to open",
+    "title": "Your Invitation",
+    "subtitle": "We're so excited to share our journey with you",
+    "sections": {
+      "our_story": "Our Story",
+      "the_venue": "Our Venue",
+      "accommodation": "Stay & Travel"
+    }
+  },
+  "moments": {
+    "eyebrow": "Our Moments",
+    "heading_first": "The",
+    "heading_second": "Gallery",
+    "carousel_label": "Our photo gallery",
+    "title": "Our Moments",
+    "subtitle": "A glimpse into our journey together"
+  },
+  "story": {
+    "eyebrow": "Our Journey",
+    "heading_first": "How our",
+    "heading_second": "Story began",
+    "title": "Our Story",
+    "subtitle": "How we found our forever",
+    "quote": "It was in this beautiful place that two strangers became something more. Years later, we’re coming back to where it all began, to promise each other forever. From being friends to soulmates, our journey has been filled with love, laughter, and countless memories. And with your presence, we will create many more.",
+    "hashtag": "#AnkishLoveStory"
+  },
+  "wishes": {
+    "eyebrow": "Shower of Blessings",
+    "heading_first": "Greetings &",
+    "heading_second": "Love",
+    "title": "Heartfelt Wishes",
+    "subtitle": "Share your blessings with us"
+  },
+  "save_the_date": {
+    "title": "Save The Date",
+    "heading_first": "Reveal our",
+    "heading_second": "Special Day",
+    "scratch_title": "Mark Your Calendar",
+    "scratch_hint": "✦ Scratch with your finger or mouse ✦",
+    "countdown": {
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "seconds": "Seconds"
+    },
+    "subtitle": "December 5, 2026",
+    "details": "Join us for a celebration of love",
+    "acc_title": "Accessibility Information",
+    "acc_content": "This website is designed to be accessible to all users. If you encounter any accessibility issues, please contact us."
+  },
+  "curtains": {
+    "open": "Open Curtains",
+    "open_label": "Tap to open the invitation",
+    "open_hint": "Tap to open",
+    "tassel_label": "Pull the tassel to open the curtains"
+  },
+  "music_player": {
+    "play": "Play music",
+    "pause": "Pause music",
+    "playback_error": "Music playback failed. Activate the music button to retry.",
+    "load_error": "Music could not be loaded."
+  },
+  "rsvp": {
+    "title": "RSVP",
+    "thank_you": "Thank you, {name}!",
+    "confirmation": "Your response has been noted.",
+    "close": "Close",
+    "name": "Your name",
+    "accept": "Joyfully Accept",
+    "decline": "Regretfully Decline",
+    "guest_count": "Number of guests",
+    "message": "A message for the couple",
+    "error": "Error",
+    "submit_error": "Could not send your RSVP. Please try again.",
+    "sending": "Sending...",
+    "send": "Send"
+  },
+  "guest_details": {
+    "eyebrow": "Helpful Details",
+    "heading_first": "Things to",
+    "heading_second": "Know",
+    "gifts_eyebrow": "Blessings & Gifts",
+    "gifts_heading_first": "Shagun &",
+    "gifts_heading_second": "Blessings",
+    "gifts_message": "Your presence and blessings are our greatest gift. If you wish to honor us with a shagun, digital transfer details are below.",
+    "copied": "Copied ✓",
+    "copy_failed": "Copy failed",
+    "wishlist": "Amazon Gift Wishlist"
+  }
+}

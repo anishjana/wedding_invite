@@ -22,7 +22,7 @@ function useCountdown() {
   return countdown;
 }
 
-function ScratchCard() {
+function ScratchCard({ translate = (_key, fallback) => fallback }) {
   const canvasRef = useRef(null);
   const [isRevealed, setIsRevealed] = useState(false);
   const countdown = useCountdown();
@@ -43,9 +43,20 @@ function ScratchCard() {
     context.font = "700 24px Cormorant Garamond";
     context.textAlign = "center";
     context.letterSpacing = "1.2px";
-    context.fillText("Mark Your Calendar", 160, 65);
+    context.fillText(
+      translate("save_the_date.scratch_title", "Mark Your Calendar"),
+      160,
+      65,
+    );
     context.font = "700 16px Cormorant Garamond";
-    context.fillText("✦ Scratch with your finger or mouse ✦", 160, 100);
+    context.fillText(
+      translate(
+        "save_the_date.scratch_hint",
+        "✦ Scratch with your finger or mouse ✦",
+      ),
+      160,
+      100,
+    );
 
     let isScratching = false;
     const getPosition = (event) => {
@@ -95,12 +106,14 @@ function ScratchCard() {
       window.removeEventListener("mouseup", stopScratching);
       window.removeEventListener("touchend", stopScratching);
     };
-  }, []);
+  }, [translate]);
 
   return (
     <>
       <div className={`scratch${isRevealed ? " revealed" : ""}`}>
-        <div className="date">{DATE_LABEL}</div>
+        <div className="date">
+          {translate("data.date_label", DATE_LABEL)}
+        </div>
         <canvas ref={canvasRef} className={isRevealed ? "gone" : ""} />
       </div>
       {isRevealed && (
@@ -108,7 +121,9 @@ function ScratchCard() {
           {["Days", "Hours", "Minutes", "Seconds"].map((label, index) => (
             <div key={label}>
               <b>{countdown[index]}</b>
-              <span>{label}</span>
+              <span>
+                {translate(`save_the_date.countdown.${label.toLowerCase()}`, label)}
+              </span>
             </div>
           ))}
         </div>
@@ -117,15 +132,18 @@ function ScratchCard() {
   );
 }
 
-export default function SaveTheDate({ revealDirection = "right" }) {
+export default function SaveTheDate({
+  revealDirection = "right",
+  translate = (_key, fallback) => fallback,
+}) {
   return (
     <Section revealDirection={revealDirection}>
       <SectionHeading
-        eyebrow="Save The Date"
-        first="Reveal our"
-        second="Special Day"
+        eyebrow={translate("save_the_date.title", "Save The Date")}
+        first={translate("save_the_date.heading_first", "Reveal our")}
+        second={translate("save_the_date.heading_second", "Special Day")}
       />
-      <ScratchCard />
+      <ScratchCard translate={translate} />
     </Section>
   );
 }

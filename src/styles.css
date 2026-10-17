@@ -67,6 +67,14 @@ body {
     overflow-x: clip
 }
 
+.language-bengali {
+    --font-display: var(--font-bengali-heading);
+    --font-body: var(--font-bengali-body);
+    --font-script: var(--font-bengali-decorative);
+    --font-serif: var(--font-bengali-text);
+    --font-serif-italic: var(--font-bengali-text);
+}
+
 button,
 input[type="button"],
 input[type="submit"],
@@ -168,6 +176,11 @@ em {
     font-size: clamp(3.5rem, 19vw, 10rem);
     line-height: 1;
     animation: rise 1.4s both
+}
+
+.hero h1.bengali {
+    font-size: 7rem;
+    margin-top: 2rem;
 }
 
 .hero h1:last-of-type {
@@ -3211,6 +3224,58 @@ div.background-image {
     animation: 2s ease-out infinite music-pulse;
     position: absolute;
     inset: -4px
+}
+
+.imm-lang-btn {
+    z-index: 100;
+    cursor: pointer;
+    border: 1px solid var(--imm-glass-border);
+    -webkit-backdrop-filter: blur(16px);
+    width: 50px;
+    height: 50px;
+    color: var(--imm-peach-gold);
+    background: #080610d9;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s;
+    display: flex;
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    box-shadow: 0 4px 24px #00000080
+}
+
+.imm-lang-btn:hover {
+    border-color: var(--imm-gold-accent);
+    background: #d4af371a;
+    transform: scale(1.1)
+}
+
+.imm-lang-btn.active {
+    background: linear-gradient(135deg, var(--imm-gold-accent), var(--imm-blush));
+    color: var(--imm-midnight);
+    border-color: #0000
+}
+
+/* .imm-lang-btn.active:after {
+    content: "";
+    border: 2px solid var(--imm-gold-accent);
+    border-radius: 50%;
+    animation: 2s ease-out infinite language-pulse;
+    position: absolute;
+    inset: -4px
+} */
+
+@keyframes language-pulse {
+    0%,to {
+        opacity: .6;
+        transform: scale(1)
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5)
+    }
 }
 
 @keyframes music-pulse {

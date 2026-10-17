@@ -52,7 +52,13 @@ const velvet = (side) => ({
   ].join(","),
 });
 
-function Tassel({ onPull, onDragProgress, onRelease, hidden }) {
+function Tassel({
+  onPull,
+  onDragProgress,
+  onRelease,
+  hidden,
+  translate = (_key, fallback) => fallback,
+}) {
   const y = useMotionValue(0);
   const cordHeight = useTransform(y, (v) => CORD_BASE + v);
 
@@ -100,7 +106,10 @@ function Tassel({ onPull, onDragProgress, onRelease, hidden }) {
       <motion.div
         role="button"
         tabIndex={hidden ? -1 : 0}
-        aria-label="Pull the tassel to open the curtains"
+        aria-label={translate(
+          "curtains.tassel_label",
+          "Pull the tassel to open the curtains",
+        )}
         drag="y"
         dragConstraints={{ top: 0, bottom: PULL_MAX }}
         dragElastic={0.12}
@@ -211,12 +220,18 @@ function Tassel({ onPull, onDragProgress, onRelease, hidden }) {
 }
 
 /** Circular illuminated marquee sign used as the "open" button */
-function MarqueeButton({ onClick }) {
+function MarqueeButton({
+  onClick,
+  translate = (_key, fallback) => fallback,
+}) {
   return (
     <motion.button
       type="button"
       className="mq-sign"
-      aria-label="Tap to open the invitation"
+      aria-label={translate(
+        "curtains.open_label",
+        "Tap to open the invitation",
+      )}
       onClick={onClick}
       initial={{ opacity: 0, scale: 0.85 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -246,7 +261,9 @@ function MarqueeButton({ onClick }) {
         );
       })}
 
-      <span className="mq-text">Tap to open</span>
+      <span className="mq-text">
+        {translate("curtains.open_hint", "Tap to open")}
+      </span>
     </motion.button>
   );
 }
@@ -256,6 +273,7 @@ export default function WeddingCurtainReveal({
   onOpened,
   onClose,
   keepFrame = true,
+  translate = (_key, fallback) => fallback,
 }) {
   const [open, setOpen] = useState(false);
   const [isFading, setIsFading] = useState(false);
@@ -476,6 +494,7 @@ export default function WeddingCurtainReveal({
 
       <Tassel
         hidden={open}
+        translate={translate}
         onPull={() => setOpenState(true)}
         onDragProgress={(distance) =>
           curtainProgress.set(
@@ -506,7 +525,12 @@ export default function WeddingCurtainReveal({
         }}
       >
         <AnimatePresence>
-          {!open && <MarqueeButton onClick={() => setOpenState(true)} />}
+          {!open && (
+            <MarqueeButton
+              onClick={() => setOpenState(true)}
+              translate={translate}
+            />
+          )}
         </AnimatePresence>
       </div>
     </motion.div>

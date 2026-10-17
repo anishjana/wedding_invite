@@ -11,7 +11,13 @@ const TRACKS = ["bengali.mp3"];
 const VOLUME = 0.3;
 const FADE_IN_DURATION = 5000;
 
-const MusicPlayer = forwardRef(function MusicPlayer({ visible }, ref) {
+const MusicPlayer = forwardRef(function MusicPlayer(
+  {
+    visible,
+    translate = (_key, fallback) => fallback,
+  },
+  ref,
+) {
   const audioRef = useRef(null);
   const trackRef = useRef("");
   const fadeFrameRef = useRef(null);
@@ -72,7 +78,10 @@ const MusicPlayer = forwardRef(function MusicPlayer({ visible }, ref) {
       console.error("Music playback failed:", error);
       setIsPlaying(false);
       setPlaybackError(
-        "Music playback failed. Activate the music button to retry.",
+        translate(
+          "music_player.playback_error",
+          "Music playback failed. Activate the music button to retry.",
+        ),
       );
     } finally {
       playbackAttemptRef.current = false;
@@ -137,7 +146,9 @@ const MusicPlayer = forwardRef(function MusicPlayer({ visible }, ref) {
         onError={() => {
           stopFade();
           setIsPlaying(false);
-          setPlaybackError("Music could not be loaded.");
+          setPlaybackError(
+            translate("music_player.load_error", "Music could not be loaded."),
+          );
         }}
       />
       {visible && (
@@ -148,9 +159,18 @@ const MusicPlayer = forwardRef(function MusicPlayer({ visible }, ref) {
           type="button"
           className={`imm-music-btn${isPlaying ? " playing" : ""}`}
           onClick={togglePlayback}
-          aria-label={isPlaying ? "Pause music" : "Play music"}
+          aria-label={
+            isPlaying
+              ? translate("music_player.pause", "Pause music")
+              : translate("music_player.play", "Play music")
+          }
           aria-pressed={isPlaying}
-          title={playbackError || (isPlaying ? "Pause music" : "Play music")}
+          title={
+            playbackError ||
+            (isPlaying
+              ? translate("music_player.pause", "Pause music")
+              : translate("music_player.play", "Play music"))
+          }
         >
           {isPlaying ? (
             <svg

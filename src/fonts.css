@@ -24,10 +24,46 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "BenSen Handwriting";
+  src: url("/fonts/BenSenHandwriting.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lipi Mollika Unicode";
+  src: url("/fonts/Lipi Mollika Unicode.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lohit";
+  src: url("/fonts/Lohit_14-04-2007.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ruma ANSI";
+  src: url("/fonts/Ruma ANSI.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   --font-display: "Allura", cursive;
   --font-body: "Italianno", cursive;
   --font-script: "Parisienne", cursive;
   --font-serif: "Cormorant Garamond", serif;
   --font-serif-italic: "Spectral", serif;
+  --font-bengali-heading: "BenSen Handwriting", cursive;
+  --font-bengali-body: "Lohit", sans-serif;
+  --font-bengali-decorative: "Lipi Mollika Unicode", cursive;
+  --font-bengali-text: "Ruma ANSI", sans-serif;
 }

@@ -44,11 +44,29 @@ function GalleryMoment({ moment, index }) {
   );
 }
 
-export default function Moments({ revealDirection = "right" }) {
+export default function Moments({
+  revealDirection = "right",
+  translate = (_key, fallback) => fallback,
+}) {
+  const slides = gallery.map((slide, index) => ({
+    ...slide,
+    title: translate(
+      `data.galleryLabels.${index}`,
+      slide.title,
+    ),
+  }));
+
   return (
     <Section className="moments-section" revealDirection={revealDirection}>
-      <SectionHeading eyebrow="Our Moments" first="The" second="Gallery" />
-      <PolaroidLineCarousel slides={gallery}></PolaroidLineCarousel>
+      <SectionHeading
+        eyebrow={translate("moments.eyebrow", "Our Moments")}
+        first={translate("moments.heading_first", "The")}
+        second={translate("moments.heading_second", "Gallery")}
+      />
+      <PolaroidLineCarousel
+        slides={slides}
+        ariaLabel={translate("moments.carousel_label", "Our photo gallery")}
+      />
     </Section>
   );
 }

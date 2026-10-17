@@ -32,7 +32,10 @@ const cardVariants = (index) => ({
   },
 });
 
-export default function Ceremonies({ revealDirection = "right" }) {
+export default function Ceremonies({
+  revealDirection = "right",
+  translate = (_key, fallback) => fallback,
+}) {
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -57,9 +60,9 @@ export default function Ceremonies({ revealDirection = "right" }) {
   return (
     <Section revealDirection={revealDirection}>
       <SectionHeading
-        eyebrow="The Sacred Rites"
-        first="The"
-        second="Ceremonies"
+        eyebrow={translate("ceremonies.section_eyebrow", "The Sacred Rites")}
+        first={translate("ceremonies.section_title.0", "The")}
+        second={translate("ceremonies.section_title.1", "Ceremonies")}
       />
       <motion.div className="grid ceremony-grid">
         {events.map((event, index) => (
@@ -116,17 +119,21 @@ export default function Ceremonies({ revealDirection = "right" }) {
                   event.icon
                 )}
               </span>
-              <h3>{event.name}</h3>
-              <p className="gold">{event.when}</p>
-              <p>{event.at}</p>
+              <h3>{translate(`data.events.${index}.name`, event.name)}</h3>
+              <p className="gold">
+                {translate(`data.events.${index}.when`, event.when)}
+              </p>
+              <p>{translate(`data.events.${index}.at`, event.at)}</p>
               {/* <p><small>Dress: </small>{event.dress}</p> */}
-              <p className="d">{event.desc}</p>
+              <p className="d">
+                {translate(`data.events.${index}.desc`, event.desc)}
+              </p>
               <div className="row">
                 <a href={mapUrl(event)} target="_blank" rel="noreferrer">
-                  Map
+                  {translate("ceremonies.map", "Map")}
                 </a>
                 <a href={calendarUrl(event)} target="_blank" rel="noreferrer">
-                  Google Calendar
+                  {translate("ceremonies.google_calendar", "Google Calendar")}
                 </a>
               </div>
             </div>

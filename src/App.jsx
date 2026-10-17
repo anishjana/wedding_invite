@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useTranslation } from "./hooks/useTranslation";
 import FallingConfetti from "./components/FallingConfetti";
 import StaticBackground from "./components/StaticBackground";
 import Ceremonies from "./components/Ceremonies";
@@ -10,9 +11,13 @@ import SaveTheDate from "./components/SaveTheDate";
 import Story from "./components/Story";
 import Curtains from "./components/Curtains";
 import MusicPlayer from "./components/MusicPlayer";
+import LanguageToggle from "./components/LanguageToggle";
 import { Analytics } from "@vercel/analytics/react";
+
 export default function App() {
   const [isCurtainOpen, setIsCurtainOpen] = useState(false);
+  const [language, setLanguage] = useState('en');
+  const { translate } = useTranslation(language);
   const musicPlayerRef = useRef(null);
   const chimeRef = useRef(null);
 
@@ -28,28 +33,62 @@ export default function App() {
   };
 
   return (
-    <main>
+    <main
+      className={language === "bn" ? "language-bengali" : undefined}
+      lang={language}
+    >
       {isCurtainOpen && (
         <>
           <FallingConfetti />
-          <Hero revealDirection="left" curtainsOpened={isCurtainOpen} />
-          <SaveTheDate revealDirection="right" />
-          <Ceremonies revealDirection="left" />
-          <Invitation revealDirection="right" />
-          <Story revealDirection="left" />
-          <Moments revealDirection="right" />
-          <FinalRsvp revealDirection="left" />
+          <Hero
+            revealDirection="left"
+            curtainsOpened={isCurtainOpen}
+            language={language}
+            translate={translate}
+          />
+          <SaveTheDate
+            revealDirection="right"
+            translate={translate}
+          />
+          <Ceremonies
+            revealDirection="left"
+            translate={translate}
+          />
+          <Invitation
+            revealDirection="right"
+            translate={translate}
+          />
+          <Story revealDirection="left" translate={translate} />
+          <Moments
+            revealDirection="right"
+            translate={translate}
+          />
+          <FinalRsvp
+            revealDirection="left"
+            translate={translate}
+          />
         </>
       )}
       <Curtains
         keepFrame={false}
+        translate={translate}
         onOpen={() => {
           musicPlayerRef.current?.start();
           playRevealChime();
           setIsCurtainOpen(true);
         }}
       />
-      <MusicPlayer ref={musicPlayerRef} visible={isCurtainOpen} />
+      <MusicPlayer
+        ref={musicPlayerRef}
+        visible={isCurtainOpen}
+        translate={translate}
+      />
+      <LanguageToggle
+        visible={isCurtainOpen}
+        language={language}
+        translate={translate}
+        onLanguageChange={setLanguage}
+      />
       <audio
         ref={chimeRef}
         src={`${import.meta.env.BASE_URL}music-effect/chime.mp3`}

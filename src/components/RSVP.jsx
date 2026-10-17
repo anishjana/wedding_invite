@@ -3,7 +3,10 @@ import { motion, useReducedMotion } from "framer-motion";
 import { db } from "../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
-export default function RSVP({ onClose }) {
+export default function RSVP({
+  onClose,
+  translate = (_key, fallback) => fallback,
+}) {
   const reduceMotion = useReducedMotion();
   const [form, setForm] = useState({
     name: "",
@@ -40,7 +43,12 @@ export default function RSVP({ onClose }) {
       setIsSent(true);
     } catch (error) {
       console.error("Error submitting RSVP:", error);
-      setSubmitError(error.message);
+      setSubmitError(
+        translate(
+          "rsvp.submit_error",
+          "Could not send your RSVP. Please try again.",
+        ),
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -66,47 +74,64 @@ export default function RSVP({ onClose }) {
       >
         {isSent ? (
           <>
-            <h3>Thank you, {form.name}!</h3>
-            <p>Your response has been noted.</p>
+            <h3>
+              {translate("rsvp.thank_you", "Thank you, {name}!").replace(
+                "{name}",
+                form.name,
+              )}
+            </h3>
+            <p>{translate("rsvp.confirmation", "Your response has been noted.")}</p>
             <button className="btn" onClick={onClose}>
-              Close
+              {translate("rsvp.close", "Close")}
             </button>
           </>
         ) : (
           <div className="form">
-            <h3>RSVP</h3>
+            <h3>{translate("rsvp.title", "RSVP")}</h3>
             <input
               required
-              placeholder="Your name"
+              placeholder={translate("rsvp.name", "Your name")}
               value={form.name}
               onChange={updateField("name")}
             />
             <select value={form.attend} onChange={updateField("attend")}>
-              <option value="yes">Joyfully Accept</option>
-              <option value="no">Regretfully Decline</option>
+              <option value="yes">
+                {translate("rsvp.accept", "Joyfully Accept")}
+              </option>
+              <option value="no">
+                {translate("rsvp.decline", "Regretfully Decline")}
+              </option>
             </select>
             <input
               type="number"
               required
               min="1"
               max="10"
+              aria-label={translate("rsvp.guest_count", "Number of guests")}
               value={form.guests}
               onChange={updateField("guests")}
             />
             <textarea
-              placeholder="A message for the couple"
+              placeholder={translate(
+                "rsvp.message",
+                "A message for the couple",
+              )}
               value={form.note}
               onChange={updateField("note")}
             />
             {submitError && (
-              <p className="error">Error: {submitError}</p>
+              <p className="error">
+                {translate("rsvp.error", "Error")}: {submitError}
+              </p>
             )}
             <button
               className="btn"
               disabled={!canSubmit || isSubmitting}
               onClick={submitForm}
             >
-              {isSubmitting ? "Sending..." : "Send"}
+              {isSubmitting
+                ? translate("rsvp.sending", "Sending...")
+                : translate("rsvp.send", "Send")}
             </button>
           </div>
         )}
