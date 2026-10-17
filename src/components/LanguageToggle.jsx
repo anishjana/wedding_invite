@@ -34,7 +34,7 @@ const LanguageToggle = ({
           {language === "en" ? (
             <span className="lang-icon">বাং</span>
           ) : (
-            <span className="lang-icon">EN</span>
+            <span className="lang-icon english-label">EN</span>
           )}
         </motion.button>
       )}

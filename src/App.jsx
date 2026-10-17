@@ -16,7 +16,9 @@ import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
   const [isCurtainOpen, setIsCurtainOpen] = useState(false);
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState("en");
+  const swapCouple =
+    new URLSearchParams(window.location.search).get("v") === "v1";
   const { translate } = useTranslation(language);
   const musicPlayerRef = useRef(null);
   const chimeRef = useRef(null);
@@ -44,29 +46,15 @@ export default function App() {
             revealDirection="left"
             curtainsOpened={isCurtainOpen}
             language={language}
+            swapCouple={swapCouple}
             translate={translate}
           />
-          <SaveTheDate
-            revealDirection="right"
-            translate={translate}
-          />
-          <Ceremonies
-            revealDirection="left"
-            translate={translate}
-          />
-          <Invitation
-            revealDirection="right"
-            translate={translate}
-          />
+          <SaveTheDate revealDirection="right" translate={translate} />
+          <Ceremonies revealDirection="left" translate={translate} />
+          <Invitation revealDirection="right" translate={translate} />
           <Story revealDirection="left" translate={translate} />
-          <Moments
-            revealDirection="right"
-            translate={translate}
-          />
-          <FinalRsvp
-            revealDirection="left"
-            translate={translate}
-          />
+          <Moments revealDirection="right" translate={translate} />
+          <FinalRsvp revealDirection="left" translate={translate} />
         </>
       )}
       <Curtains

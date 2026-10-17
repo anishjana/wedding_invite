@@ -3258,6 +3258,10 @@ div.background-image {
     border-color: #0000
 }
 
+.lang-icon.english-label {
+    font-family: "Cormorant Garamond", serif;
+}
+
 /* .imm-lang-btn.active:after {
     content: "";
     border: 2px solid var(--imm-gold-accent);

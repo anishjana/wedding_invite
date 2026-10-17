@@ -6,10 +6,13 @@ export default function Hero({
   revealDirection = "right",
   curtainsOpened = true,
   language = "en",
+  swapCouple = false,
   translate = (_key, fallback) => fallback,
 }) {
   const reduceMotion = useReducedMotion();
   const revealProps = useRevealOnScroll(revealDirection);
+  const firstPartner = swapCouple ? "b" : "a";
+  const secondPartner = swapCouple ? "a" : "b";
 
   return (
     <motion.section {...revealProps} className="hero">
@@ -32,14 +35,14 @@ export default function Hero({
         }}
       >
         <h1 className={language === "bn" ? "bengali" : undefined}>
-          {translate("data.couple.a", couple.a)}
+          {translate(`data.couple.${firstPartner}`, couple[firstPartner])}
         </h1>
         <span className="amp">
           {" "}
           {translate("data.couple.and", couple.and)}{" "}
         </span>
         <h1 className={language === "bn" ? "bengali" : undefined}>
-          {translate("data.couple.b", couple.b)}
+          {translate(`data.couple.${secondPartner}`, couple[secondPartner])}
         </h1>
         <div className="hero-details mt-10 text-lg">
           <p className="tracking-[0.15em]">
