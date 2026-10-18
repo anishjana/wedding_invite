@@ -64,7 +64,7 @@ export default function Hero({
           </div>
         </div>
 
-        <p className="gold mt-14 mb-4">
+        <p className="gold mt-14 mb-4 latin-text">
           {translate("data.couple.tag", couple.tag)}
         </p>
       </motion.div>

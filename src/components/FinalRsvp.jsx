@@ -28,7 +28,7 @@ export default function FinalRsvp({
             "RSVP simply means — please let us know if you'll be able to join us.",
           )}
         </p>
-        <p className="gold final-couple-tag">
+        <p className="gold final-couple-tag latin-text">
           {translate("data.couple.tag", couple.tag)}
         </p>
       </Section>

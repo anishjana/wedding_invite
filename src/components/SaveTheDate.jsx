@@ -42,7 +42,7 @@ function ScratchCard({ translate = (_key, fallback) => fallback }) {
     context.fillStyle = "#0b0809";
     context.font = "700 24px Cormorant Garamond";
     context.textAlign = "center";
-    context.letterSpacing = "1.2px";
+    context.letterSpacing = "1.1px";
     context.fillText(
       translate("save_the_date.scratch_title", "Mark Your Calendar"),
       160,
@@ -111,9 +111,7 @@ function ScratchCard({ translate = (_key, fallback) => fallback }) {
   return (
     <>
       <div className={`scratch${isRevealed ? " revealed" : ""}`}>
-        <div className="date">
-          {translate("data.date_label", DATE_LABEL)}
-        </div>
+        <div className="date">{translate("data.date_label", DATE_LABEL)}</div>
         <canvas ref={canvasRef} className={isRevealed ? "gone" : ""} />
       </div>
       {isRevealed && (
@@ -122,7 +120,10 @@ function ScratchCard({ translate = (_key, fallback) => fallback }) {
             <div key={label}>
               <b>{countdown[index]}</b>
               <span>
-                {translate(`save_the_date.countdown.${label.toLowerCase()}`, label)}
+                {translate(
+                  `save_the_date.countdown.${label.toLowerCase()}`,
+                  label,
+                )}
               </span>
             </div>
           ))}

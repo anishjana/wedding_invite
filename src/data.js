@@ -10,13 +10,13 @@ export const couple = {
 export const families = [
   {
     title: "Bride's Family",
-    host: "Mrs. Gopa Pradhan & Mr. Sibayan Pradhan",
+    host: "Mrs. Gopa Pradhan, Ms. Anuska Pradhan &  Mr. Sibayan Pradhan ",
     pg: "Late Smt. Kamla Sharma & Late Shri Mohan Sharma",
     mg: "Late Smt. Saroj Verma & Late Shri Gopal Verma",
   },
   {
     title: "Groom's Family",
-    host: "Mrs. Nipu Jana & Mr. Ansuman Jana",
+    host: "Mrs. Nipu Jana, Mrs. Anisha Dey & Mr. Ansuman Jana",
     pg: "Late Smt. Radha Kapoor & Late Shri Vijay Kapoor",
     mg: "Late Smt. Pushpa Malhotra & Late Shri Ramesh Malhotra",
   },

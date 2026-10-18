@@ -16,7 +16,19 @@ function HelpfulDetails({
         {know.map(([title, detail], index) => (
           <article key={title} className="ev">
             <h3>{translate(`data.know.${index}.0`, title)}</h3>
-            <p>{translate(`data.know.${index}.1`, detail)}</p>
+            <p>
+              {translate(`data.know.${index}.1`, detail)
+                .split(/(#Ankish(?:LoveStory)?)/g)
+                .map((part, partIndex) =>
+                  part.startsWith("#") ? (
+                    <span key={partIndex} className="latin-text">
+                      {part}
+                    </span>
+                  ) : (
+                    part
+                  ),
+                )}
+            </p>
           </article>
         ))}
       </div>

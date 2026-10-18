@@ -18,7 +18,7 @@ export default function Story({
           "It was in this beautiful place that two strangers became something more. Years later, we’re coming back to where it all began, to promise each other forever. From being friends to soulmates, our journey has been filled with love, laughter, and countless memories. And with your presence, we will create many more.",
         )}
       </p>
-      <p className="gold">{translate("data.couple.tag", couple.tag)}</p>
+      <p className="gold latin-text">{translate("data.couple.tag", couple.tag)}</p>
     </Section>
   );
 }
