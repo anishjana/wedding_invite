@@ -545,7 +545,7 @@ export default function WeddingCurtainReveal({
           justifyContent: "center",
           zIndex: 50,
           pointerEvents: "none",
-          bottom: "-20rem",
+          bottom: "-25rem",
         }}
       >
         <AnimatePresence>
