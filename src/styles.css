@@ -714,7 +714,7 @@ button:disabled {
 }
 
 div.background-image {
-    filter: blur(2.1px) saturate(95%) invert(5%) sepia(7%) saturate(154%) hue-rotate(18deg) brightness(80%) contrast(92%);
+    filter: blur(2.1px) saturate(95%) invert(5%) sepia(7%) saturate(154%) hue-rotate(18deg) brightness(88%) contrast(92%);
     opacity: 65%;
 }
 

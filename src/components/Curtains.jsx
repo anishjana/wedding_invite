@@ -37,8 +37,8 @@ const CORD_BASE = 110;
 
 // Marquee sign settings
 const BULB_COUNT = 20;
-const SIGN_SIZE = 200; // px, outer diameter
-const BULB_RADIUS = 86; // px, distance of bulbs from center
+const SIGN_SIZE = 160; // px, outer diameter
+const BULB_RADIUS = 68; // px, distance of bulbs from center
 
 const velvet = (side) => ({
   backgroundColor: CURTAIN,
@@ -54,6 +54,7 @@ const velvet = (side) => ({
 
 function Tassel({
   onPull,
+  onPullStart,
   onDragProgress,
   onRelease,
   hidden,
@@ -114,6 +115,7 @@ function Tassel({
         dragConstraints={{ top: 0, bottom: PULL_MAX }}
         dragElastic={0.12}
         onTap={onPull}
+        onDragStart={onPullStart}
         whileDrag={{ cursor: "grabbing" }}
         onDrag={(_, info) => onDragProgress(info.offset.y)}
         onDragEnd={(_, info) => {
@@ -185,16 +187,15 @@ function Tassel({
             opacity=".7"
           />
         </motion.svg>
-        <motion.svg
-          aria-hidden="true"
-          width="20"
-          height="14"
-          viewBox="0 0 20 14"
+        <motion.div
           style={{
             position: "absolute",
             top: 110,
-            left: 12,
-            overflow: "visible",
+            left: 0,
+            width: 44,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
             pointerEvents: "none",
             filter: "drop-shadow(0 1px 3px rgba(0,0,0,.8))",
           }}
@@ -205,25 +206,44 @@ function Tassel({
             ease: "easeInOut",
           }}
         >
-          <path
-            d="m3 3 7 7 7-7"
-            fill="none"
-            stroke="#f1da9b"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </motion.svg>
+          <svg
+            aria-hidden="true"
+            width="20"
+            height="14"
+            viewBox="0 0 20 14"
+            style={{ overflow: "visible" }}
+          >
+            <path
+              d="m3 3 7 7 7-7"
+              fill="none"
+              stroke="#f1da9b"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span
+            aria-hidden="true"
+            style={{
+              color: "#f1da9b",
+              fontSize: 11.5,
+              fontWeight: 700,
+              fontFamily: "Cormorant Garamond",
+              letterSpacing: ".12em",
+              textAlign: "center",
+              textTransform: "uppercase",
+            }}
+          >
+            Pull
+          </span>
+        </motion.div>
       </motion.div>
     </motion.div>
   );
 }
 
 /** Circular illuminated marquee sign used as the "open" button */
-function MarqueeButton({
-  onClick,
-  translate = (_key, fallback) => fallback,
-}) {
+function MarqueeButton({ onClick, translate = (_key, fallback) => fallback }) {
   return (
     <motion.button
       type="button"
@@ -276,6 +296,7 @@ export default function WeddingCurtainReveal({
   translate = (_key, fallback) => fallback,
 }) {
   const [open, setOpen] = useState(false);
+  const [isTasselPulling, setIsTasselPulling] = useState(false);
   const [isFading, setIsFading] = useState(false);
   const [gone, setGone] = useState(false);
   const reduce = useReducedMotion();
@@ -285,6 +306,7 @@ export default function WeddingCurtainReveal({
 
   const setOpenState = (next) => {
     setOpen(next);
+    setIsTasselPulling(false);
     if (next) {
       animate(curtainProgress, keepFrame ? 1 : 1.2, {
         duration: reduce ? 0.01 : 2.4,
@@ -405,7 +427,7 @@ export default function WeddingCurtainReveal({
           text-align: center;
           font-family: "Cinzel", "Playfair Display", Georgia, "Times New Roman", serif;
           font-weight: 700;
-          font-size: 22px;
+          font-size: 16px;
           line-height: 1.15;
           letter-spacing: .08em;
           text-transform: uppercase;
@@ -496,19 +518,21 @@ export default function WeddingCurtainReveal({
         hidden={open}
         translate={translate}
         onPull={() => setOpenState(true)}
+        onPullStart={() => setIsTasselPulling(true)}
         onDragProgress={(distance) =>
           curtainProgress.set(
             Math.min(1, Math.max(0, distance / PULL_MAX)) *
               DRAG_REVEAL_PROGRESS,
           )
         }
-        onRelease={() =>
+        onRelease={() => {
+          setIsTasselPulling(false);
           animate(curtainProgress, 0, {
             type: "spring",
             stiffness: 150,
             damping: 22,
-          })
-        }
+          });
+        }}
       />
 
       {/* Center marquee button */}
@@ -525,7 +549,7 @@ export default function WeddingCurtainReveal({
         }}
       >
         <AnimatePresence>
-          {!open && (
+          {!open && !isTasselPulling && (
             <MarqueeButton
               onClick={() => setOpenState(true)}
               translate={translate}
